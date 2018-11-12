@@ -87,7 +87,6 @@ public class Car implements Serializable {
     @Column(name = "unlim_free")
     private Boolean unlimitKmFree;
     
-    @Size(min = 1, max = 50)
     @Column(name = "limit_km")
     private String limitKmDay;
     
@@ -241,39 +240,39 @@ public class Car implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "cruise_controle")
-    private Boolean cruiseControle;
+    private String cruiseControle;
     
     @Basic(optional = false)
     @Column(name = "reverse_camera")
-    private Boolean reverseCamera;
+    private String reverseCamera;
     
     @Basic(optional = false)
     @Column(name = "parktronik")
-    private Boolean parktronik;
+    private String parktronik;
     
     @Basic(optional = false)
     @Column(name = "radio")
-    private Boolean radio;
+    private String radio;
     
     @Basic(optional = false)
     @Column(name = "video")
-    private Boolean video;
+    private String video;
     
     @Basic(optional = false)
     @Column(name = "audio_cd")
-    private Boolean audioCd;
+    private String audioCd;
     
     @Basic(optional = false)
     @Column(name = "usb")
-    private Boolean usb;
+    private String usb;
     
     @Basic(optional = false)
     @Column(name = "mp3")
-    private Boolean mp3;
+    private String mp3;
     
     @Basic(optional = false)
     @Column(name = "aux")
-    private Boolean aux;
+    private String aux;
     
     @Basic(optional = false)
     @Column(name = "gps_included")
@@ -316,7 +315,7 @@ public class Car implements Serializable {
         this.carId = carId;
     }
 
-    public Car(Integer carId, String brand, String model, String plateNo, int productionYear, String color, String bodyType, String[] priceH, String[] priceL, String[] priceM1, String[] priceM2, String[] pricePeriod, Boolean unlimitKmFree, String limitKmDay, Integer limitOverage, Integer unlimitPrice, Boolean includedTpl, Boolean includedScdw, Integer scdwPrice, Boolean includedCdw, Integer cdwPrice, Boolean includedPai, Integer paiPrice, Integer franchiseAmount, Integer noFranchisePrice, Boolean includedTheft, Integer theftPrice, Integer depositAmount, Integer noDepositPrice, Boolean includedGreenCard, Integer greenCardPrice, String engineType, String transmission, String capacity, String drive, String fuel, String tank, String fuelConsumption, Boolean absystem, Boolean ebd, Boolean esp, String numOfSeats, String numOfDoors, String airCondition, String interior, String poweredWindows, String numOfAirbags, String sideWheel, Boolean cruiseControle, Boolean reverseCamera, Boolean parktronik, Boolean radio, Boolean video, Boolean audioCd, Boolean usb, Boolean mp3, Boolean aux, Boolean includedGps, Integer gpsPrice, Integer childBoosterPrice, Integer childSeatPrice, Integer childSeatUp1Price, Integer secondDriverPrice, Integer wifiPrice, List<Deal> dealList) {
+    public Car(Integer carId, String brand, String model, String plateNo, int productionYear, String color, String bodyType, String[] priceH, String[] priceL, String[] priceM1, String[] priceM2, String[] pricePeriod, Boolean unlimitKmFree, String limitKmDay, Integer limitOverage, Integer unlimitPrice, Boolean includedTpl, Boolean includedScdw, Integer scdwPrice, Boolean includedCdw, Integer cdwPrice, Boolean includedPai, Integer paiPrice, Integer franchiseAmount, Integer noFranchisePrice, Boolean includedTheft, Integer theftPrice, Integer depositAmount, Integer noDepositPrice, Boolean includedGreenCard, Integer greenCardPrice, String engineType, String transmission, String capacity, String drive, String fuel, String tank, String fuelConsumption, Boolean absystem, Boolean ebd, Boolean esp, String numOfSeats, String numOfDoors, String airCondition, String interior, String poweredWindows, String numOfAirbags, String sideWheel, String cruiseControle, String reverseCamera, String parktronik, String radio, String video, String audioCd, String usb, String mp3, String aux, Boolean includedGps, Integer gpsPrice, Integer childBoosterPrice, Integer childSeatPrice, Integer childSeatUp1Price, Integer secondDriverPrice, Integer wifiPrice, List<Deal> dealList) {
         this.carId = carId;
         this.brand = brand;
         this.model = model;
@@ -768,75 +767,75 @@ public class Car implements Serializable {
         this.sideWheel = sideWheel;
     }
 
-    public Boolean getCruiseControle() {
+    public String getCruiseControle() {
         return cruiseControle;
     }
 
-    public void setCruiseControle(Boolean cruiseControle) {
+    public void setCruiseControle(String cruiseControle) {
         this.cruiseControle = cruiseControle;
     }
 
-    public Boolean getReverseCamera() {
+    public String getReverseCamera() {
         return reverseCamera;
     }
 
-    public void setReverseCamera(Boolean reverseCamera) {
+    public void setReverseCamera(String reverseCamera) {
         this.reverseCamera = reverseCamera;
     }
 
-    public Boolean getParktronik() {
+    public String getParktronik() {
         return parktronik;
     }
 
-    public void setParktronik(Boolean parktronik) {
+    public void setParktronik(String parktronik) {
         this.parktronik = parktronik;
     }
 
-    public Boolean getRadio() {
+    public String getRadio() {
         return radio;
     }
 
-    public void setRadio(Boolean radio) {
+    public void setRadio(String radio) {
         this.radio = radio;
     }
 
-    public Boolean getVideo() {
+    public String getVideo() {
         return video;
     }
 
-    public void setVideo(Boolean video) {
+    public void setVideo(String video) {
         this.video = video;
     }
 
-    public Boolean getAudioCd() {
+    public String getAudioCd() {
         return audioCd;
     }
 
-    public void setAudioCd(Boolean audioCd) {
+    public void setAudioCd(String audioCd) {
         this.audioCd = audioCd;
     }
 
-    public Boolean getUsb() {
+    public String getUsb() {
         return usb;
     }
 
-    public void setUsb(Boolean usb) {
+    public void setUsb(String usb) {
         this.usb = usb;
     }
 
-    public Boolean getMp3() {
+    public String getMp3() {
         return mp3;
     }
 
-    public void setMp3(Boolean mp3) {
+    public void setMp3(String mp3) {
         this.mp3 = mp3;
     }
 
-    public Boolean getAux() {
+    public String getAux() {
         return aux;
     }
 
-    public void setAux(Boolean aux) {
+    public void setAux(String aux) {
         this.aux = aux;
     }
 

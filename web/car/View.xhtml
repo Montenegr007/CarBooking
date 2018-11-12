@@ -512,71 +512,71 @@
                                 
                                 <p:button value="" style="width: 40px; height: 20px; border-color: black !important; background: #{carController.selected.color} !important;"/>
                             </p:column>
-                            <p:column rendered="#{carController.selected.parktronik !=false}" styleClass="firstcolumn">
+                            <p:column  styleClass="firstcolumn">
                                 <h:outputText value="Parktronik"/>
                             </p:column>
-                            <p:column styleClass="secondcolumn" rendered="#{carController.selected.parktronik !=false}">
-                                <p:selectBooleanCheckbox value="#{carController.selected.parktronik}" rendered="#{carController.selected.parktronik != false}" disabled="true" styleClass="blackBox"/>
+                            <p:column styleClass="secondcolumn" >
+                                <h:outputText value="#{carController.selected.parktronik}"/>
                             </p:column>
                         </p:row>
                             
                             <p:row>
-                                <p:column rendered="#{carController.selected.cruiseControle !=false}" styleClass="firstcolumn">
+                                <p:column  styleClass="firstcolumn">
                                 <h:outputText value="Cruise controle"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.cruiseControle !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.cruiseControle}" rendered="#{carController.selected.cruiseControle != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.cruiseControle}"/>
                             </p:column>
-                                <p:column rendered="#{carController.selected.reverseCamera !=false}" styleClass="firstcolumn">
+                                <p:column  styleClass="firstcolumn">
                                 <h:outputText value="Reverse camera"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.reverseCamera !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.reverseCamera}" rendered="#{carController.selected.reverseCamera != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.reverseCamera}"/>
                             </p:column>
                         </p:row>
                             
                         <p:row>
-                                <p:column rendered="#{carController.selected.radio !=false}" styleClass="firstcolumn">
+                                <p:column styleClass="firstcolumn">
                                 <h:outputText value="Radio"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.radio !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.radio}" rendered="#{carController.selected.radio != false}" disabled="true" styleClass="blackBox"/>
-                            </p:column>
-                                <p:column rendered="#{carController.selected.audioCd !=false}" styleClass="firstcolumn">
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.radio}"/>                           
+                                </p:column>
+                                <p:column styleClass="firstcolumn">
                                 <h:outputText value="Audio CD"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.audioCd !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.audioCd}" rendered="#{carController.selected.audioCd != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.audioCd}"/>
                             </p:column>
                         </p:row>
                             
                             <p:row>
-                                <p:column rendered="#{carController.selected.mp3 !=false}" styleClass="firstcolumn">
+                                <p:column  styleClass="firstcolumn">
                                 <h:outputText value="MP3"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.mp3 !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.mp3}" rendered="#{carController.selected.mp3 != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.mp3}"/>
                             </p:column>
-                                <p:column rendered="#{carController.selected.usb !=false}" styleClass="firstcolumn">
+                                <p:column  styleClass="firstcolumn">
                                 <h:outputText value="USB"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.usb !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.usb}" rendered="#{carController.selected.usb != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.usb}"/>
                             </p:column>
                         </p:row>
                             
                             <p:row>
-                                <p:column rendered="#{carController.selected.aux !=false}" styleClass="firstcolumn">
+                                <p:column styleClass="firstcolumn">
                                 <h:outputText value="AUX"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.aux !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.aux}" rendered="#{carController.selected.aux != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.aux}"/>
                             </p:column>
-                                <p:column rendered="#{carController.selected.video !=false}" styleClass="firstcolumn">
+                                <p:column styleClass="firstcolumn">
                                 <h:outputText value="Video DVD"/>
                             </p:column>
-                                <p:column styleClass="secondcolumn" rendered="#{carController.selected.video !=false}">
-                                    <p:selectBooleanCheckbox value="#{carController.selected.video}" rendered="#{carController.selected.video != false}" disabled="true" styleClass="blackBox"/>
+                                <p:column styleClass="secondcolumn" >
+                                    <h:outputText value="#{carController.selected.video}"/>
                             </p:column>
                         </p:row>
                             

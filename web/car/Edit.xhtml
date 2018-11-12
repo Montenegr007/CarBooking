@@ -339,7 +339,10 @@
                                     <f:selectItem itemLabel="4" itemValue="4" />
                                 </p:selectOneMenu>
                                 <h:outputLabel value="Cruise controle" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.cruiseControle}"/>
+                                <p:selectOneMenu value="#{carController.selected.cruiseControle}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                                 <h:outputLabel value="Airbag" style="font-size: 14px;"/>
                                 <p:selectOneMenu value="#{carController.selected.numOfAirbags}" style="width: 150px;">
@@ -353,16 +356,24 @@
                                     <f:selectItem itemLabel="7" itemValue="7" />
                                     <f:selectItem itemLabel="8" itemValue="8" />
                                 </p:selectOneMenu>
+                                
                                 <h:outputLabel value="Reverse camera" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.reverseCamera}"/>
+                                <p:selectOneMenu value="#{carController.selected.reverseCamera}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                                 <h:outputLabel value="Side wheele" style="font-size: 14px;"/>
                                 <p:selectOneMenu value="#{carController.selected.sideWheel}" style="width: 150px;">
                                     <f:selectItem itemLabel="Left" itemValue="Left"/>
                                     <f:selectItem itemLabel="Right" itemValue="Right" />
                                 </p:selectOneMenu>
+                                
                                 <h:outputLabel value="Parktronic" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.parktronik}"/>
+                                <p:selectOneMenu value="#{carController.selected.parktronik}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                                 <h:outputLabel value="GPS free" style="font-size: 14px;"/>
                                 <p:selectBooleanCheckbox value="#{carController.selected.includedGps}"/>
@@ -376,18 +387,36 @@
                             <p:panelGrid columns="6" style="width: 100%; border: 0px;" styleClass="ui-noborder">
 
                                 <h:outputLabel value="Radio" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.radio}"/>
-                                <h:outputLabel value="Audio-CD" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.audioCd}"/>
+                                <p:selectOneMenu value="#{carController.selected.radio}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
+                                <h:outputLabel value="Audio CD" style="font-size: 14px;"/>
+                                <p:selectOneMenu value="#{carController.selected.audioCd}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
                                 <h:outputLabel value="MP3" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.mp3}"/>
+                                <p:selectOneMenu value="#{carController.selected.mp3}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                                 <h:outputLabel value="Video-DVD" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.video}"/>
+                                <p:selectOneMenu value="#{carController.selected.video}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
                                 <h:outputLabel value="USB" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.usb}"/>
+                                <p:selectOneMenu value="#{carController.selected.usb}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
                                 <h:outputLabel value="AUX" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.aux}"/>
+                                <p:selectOneMenu value="#{carController.selected.aux}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
 
 
