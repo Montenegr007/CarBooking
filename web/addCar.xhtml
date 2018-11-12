@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        
+        <style>
+            .indivcheckbox .ui-chkbox-box {
+                width: 20px!important;
+                height: 20px!important;
+            }
+        </style>
+        
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            
+            <p:layoutUnit position="north" size="100"></p:layoutUnit>
+                                      
+            <p:layoutUnit position="center">
+                   
+                <h:form>  
+                    
+                        <p:accordionPanel multiple="true" activeIndex="0,1,2,3,4,5,6" >
+                            <p:tab title="Common">
+                                <p:panelGrid columns="6" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                                    <h:outputLabel value="Brand" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Model" style="font-size: 14px;"/>
+                                    <h:outputLabel value="License plate No" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Year of manufacture" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Body color" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Body type" style="font-size: 14px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Select a color" itemValue=""/>
+                                        <f:selectItem itemLabel="White" itemValue="White" />
+                                        <f:selectItem itemLabel="Black" itemValue="Black" />
+                                        <f:selectItem itemLabel="Red" itemValue="Red" />
+                                        <f:selectItem itemLabel="Grey" itemValue="Grey" />
+                                        <f:selectItem itemLabel="Blue" itemValue="Blue" />
+                                        <f:selectItem itemLabel="Green" itemValue="Green" />
+                                        <f:selectItem itemLabel="Brown" itemValue="Brown" />
+                                        <f:selectItem itemLabel="Yellow" itemValue="Yellow" />
+                                    </p:selectOneMenu>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="-" itemValue=""/>
+                                        <f:selectItem itemLabel="Sedan" itemValue="Sedan" />
+                                        <f:selectItem itemLabel="Hatchback" itemValue="Hatchback" />
+                                        <f:selectItem itemLabel="Wagon" itemValue="Wagon" />
+                                        <f:selectItem itemLabel="Minivan" itemValue="Minivan" />
+                                        <f:selectItem itemLabel="Minibus" itemValue="Minibus" />
+                                        <f:selectItem itemLabel="Crossover" itemValue="Crossover" />
+                                        <f:selectItem itemLabel="SUV" itemValue="SUV" />
+                                        <f:selectItem itemLabel="Pickup" itemValue="Pickup" />
+                                        <f:selectItem itemLabel="Cabriolet" itemValue="Cabriolet" />
+                                    </p:selectOneMenu>
+                                </p:panelGrid> 
+                                
+                            </p:tab>
+                            <p:tab title="Price">
+                                <p:panelGrid style="width: 100%">
+                                    <p:row style="background-color: brown; width: 100%">
+                                        <p:column/>
+                                        <p:column><h:outputLabel value="1 day"/></p:column>
+                                        <p:column><h:outputLabel value="2-3 days"/></p:column> 
+                                        <p:column><h:outputLabel value="4-7 days"/></p:column> 
+                                        <p:column><h:outputLabel value="8-14 days"/></p:column> 
+                                        <p:column><h:outputLabel value="15-21 days"/></p:column> 
+                                        <p:column><h:outputLabel value="22-30 days"/></p:column> 
+                                        <p:column><h:outputLabel value="31+ days"/></p:column> 
+                                    </p:row>
+                                     <p:row style="width: 100%">
+                                        <p:column><h:outputLabel value="High season (01.06 - 31.08)"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                    </p:row>
+                                     <p:row style="width: 100%">
+                                        <p:column><h:outputLabel value="Low season (01.11 - 14.04)"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                    </p:row>
+                                     <p:row style="width: 100%">
+                                        <p:column><h:outputLabel value="Medium season (01.09 - 31.10)"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                    </p:row>
+                                     <p:row style="width: 100%">
+                                        <p:column><h:outputLabel value="Medium season #2 (15.04 - 31.05)"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column>
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                        <p:column><p:inputText style="width: 150px;"/></p:column> 
+                                    </p:row>
+                                </p:panelGrid>
+                                
+                                
+                            </p:tab>
+                            <p:tab title="Mileage limit">
+                                
+                                <p:panelGrid columns="4" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                                    <h:outputLabel value="Unlimited free" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Limit (km/day)" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Overage fee (price/day)" style="font-size: 14px;"/>
+                                    <h:outputLabel value="Unlimited (price/day)" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    
+                                </p:panelGrid> 
+                                
+                            </p:tab>
+                            <p:tab title="Insurance">
+                                
+                                <p:panelGrid columns="4" style="width: 100%; border: 0px;">
+                                    <h:outputLabel value="TPL"/>
+                                    <h:outputLabel value="SCDW"/>
+                                    <h:outputLabel value="CDW"/>
+                                    <h:outputLabel value="Personal accident insurance"/>
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Included:  " style="font-size: 14px;"/>
+                                            <p:selectBooleanCheckbox styleClass="indivcheckbox"/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Not included(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                   
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Included:  " style="font-size: 14px;"/>
+                                            <p:selectBooleanCheckbox/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Not included(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Included:  " style="font-size: 14px;"/>
+                                            <p:selectBooleanCheckbox/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Not included(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Included:  " style="font-size: 14px;"/>
+                                            <p:selectBooleanCheckbox/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Not included(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                    
+                                    <h:outputLabel value="Franchise"/>
+                                    <h:outputLabel value="Theft protection"/>
+                                    <h:outputLabel value="Deposit"/>
+                                    <h:outputLabel value="Green card"/>
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Amount:  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Without franchise(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                   
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Included:  " style="font-size: 14px;"/>
+                                            <p:selectBooleanCheckbox/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Not included(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Amount:  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Without deposit(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+                                    <p:toolbar>
+                                        <f:facet name="left">
+                                            <h:outputLabel value="Included:  " style="font-size: 14px;"/>
+                                            <p:selectBooleanCheckbox/>
+                                                                               
+                                        </f:facet>
+
+                                        <f:facet name="right">
+                                            <h:outputLabel value="Not included(price/day):  " style="font-size: 14px;"/>
+                                            <p:inputText style="width: 100px;"/>
+                                        </f:facet>
+
+                                    </p:toolbar>
+
+
+
+                                </p:panelGrid>
+                            
+                            </p:tab>
+                            <p:tab title="Engine and chassis">
+                                
+                                <p:panelGrid columns="4" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                                    
+                                    <h:outputLabel value="Engine type (l.)" style="font-size: 14px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <h:outputLabel value="Transmission" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Manual" itemValue="Manual"/>
+                                        <f:selectItem itemLabel="Automatic" itemValue="Automatic" />
+                                        <f:selectItem itemLabel="Automatic + Manumatic" itemValue="Automatic + Manumatic" />
+                                    </p:selectOneMenu>
+                                    
+                                    <h:outputLabel value="Capasity (HP)" style="font-size: 14px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <h:outputLabel value="Drive" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Front wheel" itemValue="Front wheel"/>
+                                        <f:selectItem itemLabel="Rear wheel" itemValue="Rear wheel" />
+                                        <f:selectItem itemLabel="4 wheel" itemValue="4 wheel" />
+                                    </p:selectOneMenu>
+                                    
+                                    <h:outputLabel value="Fuel" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Benzin" itemValue="Benzin"/>
+                                        <f:selectItem itemLabel="Dizel" itemValue="Dizel" />
+                                        <f:selectItem itemLabel="Hybrid" itemValue="Hybrid" />
+                                        <f:selectItem itemLabel="Turbo dizel" itemValue="Turbo dizel" />
+                                        <f:selectItem itemLabel="Gas" itemValue="Gas" />
+                                        <f:selectItem itemLabel="Electricity" itemValue="Electricity" />
+                                    </p:selectOneMenu>
+                                    <h:outputLabel value="ABS" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    
+                                    <h:outputLabel value="Tank (l.)" style="font-size: 14px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <h:outputLabel value="EBD" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    
+                                    <h:outputLabel value="Fuel consumption (l/100km)" style="font-size: 14px;"/>
+                                    <p:inputText style="width: 250px;"/>
+                                    <h:outputLabel value="ESP" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                                                        
+                                </p:panelGrid> 
+                                
+                            </p:tab>
+                            <p:tab title="Comfort">
+                                 
+                                <p:panelGrid columns="4" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                                
+                                    <h:outputLabel value="Seats" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="1" itemValue="1"/>
+                                        <f:selectItem itemLabel="2" itemValue="2"/>
+                                        <f:selectItem itemLabel="3" itemValue="3"/>
+                                        <f:selectItem itemLabel="4" itemValue="4"/>
+                                        <f:selectItem itemLabel="5" itemValue="5"/>
+                                        <f:selectItem itemLabel="6" itemValue="6"/>
+                                        <f:selectItem itemLabel="7" itemValue="7"/>
+                                        <f:selectItem itemLabel="8" itemValue="8"/>
+                                    </p:selectOneMenu>
+                                    <h:outputLabel value="Number of doors" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="2" itemValue="2"/>
+                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                    </p:selectOneMenu>
+                                    
+                                    <h:outputLabel value="Air conditioning" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Air conditioning" itemValue="Air conditioning"/>
+                                        <f:selectItem itemLabel="1-zone climate control" itemValue="1-zone climate control" />
+                                        <f:selectItem itemLabel="1-zone climate control" itemValue="1-zone climate control" />
+                                        <f:selectItem itemLabel="1-zone climate control" itemValue="1-zone climate control" />
+                                        <f:selectItem itemLabel="None" itemValue="None" />
+                                    </p:selectOneMenu>
+                                    <h:outputLabel value="Interior" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Fabric" itemValue="Fabric"/>
+                                        <f:selectItem itemLabel="Leather" itemValue="Leather"/>
+                                        <f:selectItem itemLabel="Sport" itemValue="Sport"/>
+                                        <f:selectItem itemLabel="Sport leather" itemValue="Sport leather"/>
+                                    </p:selectOneMenu>
+                                    
+                                    <h:outputLabel value="Powered windows" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="None" itemValue="None"/>
+                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                    </p:selectOneMenu>
+                                    <h:outputLabel value="Cruise controle" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    
+                                    <h:outputLabel value="Airbag" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="None" itemValue="None"/>
+                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                        <f:selectItem itemLabel="6" itemValue="6" />
+                                        <f:selectItem itemLabel="7" itemValue="7" />
+                                        <f:selectItem itemLabel="8" itemValue="8" />
+                                    </p:selectOneMenu>
+                                    <h:outputLabel value="Reverse camera" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    
+                                    <h:outputLabel value="Side wheele" style="font-size: 14px;"/>
+                                    <p:selectOneMenu style="width: 250px;">
+                                        <f:selectItem itemLabel="Left" itemValue="Left"/>
+                                        <f:selectItem itemLabel="Right" itemValue="Right" />
+                                    </p:selectOneMenu>
+                                    <h:outputLabel value="Parktronic" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                
+                                </p:panelGrid> 
+                            </p:tab>
+                            <p:tab title="Music">
+                                
+                                <p:panelGrid columns="6" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                                
+                                    <h:outputLabel value="Radio" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    <h:outputLabel value="Audio-CD" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    <h:outputLabel value="MP3" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    
+                                    <h:outputLabel value="Video-DVD" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    <h:outputLabel value="USB" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    <h:outputLabel value="AUX" style="font-size: 14px;"/>
+                                    <p:selectBooleanCheckbox/>
+                                    
+                                                              
+                                </p:panelGrid> 
+                                
+                            </p:tab>
+                            
+                        </p:accordionPanel>
+                       </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+    </h:body>
+</html>
+

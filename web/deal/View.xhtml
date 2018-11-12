@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DealViewDlg" widgetVar="DealViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDealTitle}">
+            <h:form id="DealViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dealController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDealLabel_dealId}"/>
+                        <h:outputText value="#{dealController.selected.dealId}" title="#{bundle.ViewDealTitle_dealId}"/>
+                        <h:outputText value="#{bundle.ViewDealLabel_startDate}"/>
+                        <h:outputText value="#{dealController.selected.startDate}" title="#{bundle.ViewDealTitle_startDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDealLabel_endDate}"/>
+                        <h:outputText value="#{dealController.selected.endDate}" title="#{bundle.ViewDealTitle_endDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDealLabel_dealExist}"/>
+                        <p:selectBooleanCheckbox value="#{dealController.selected.dealExist}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewDealLabel_cId}"/>
+                        <h:outputText value="#{dealController.selected.cId}" title="#{bundle.ViewDealTitle_cId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DealViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

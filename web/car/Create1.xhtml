@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarCreateDlg1" widgetVar="CarCreateDialog1" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCarTitle}">
+            <h:form id="CarCreateForm1">
+                <h:panelGroup id="display1">
+                    <p:panelGrid columns="2" rendered="#{carController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCarLabel_carId}" for="carId" />
+                        <p:inputText id="carId" value="#{carController.selected.carId}" title="#{bundle.CreateCarTitle_carId}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_brand}" for="brand" />
+                        <p:inputText id="brand" value="#{carController.selected.brand}" title="#{bundle.CreateCarTitle_brand}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_brand}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_model}" for="model" />
+                        <p:inputText id="model" value="#{carController.selected.model}" title="#{bundle.CreateCarTitle_model}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_model}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_plateNo}" for="plateNo" />
+                        <p:inputText id="plateNo" value="#{carController.selected.plateNo}" title="#{bundle.CreateCarTitle_plateNo}" />
+                        <p:outputLabel value="#{bundle.CreateCarLabel_year}" for="year" />
+                        <p:inputText id="year" value="#{carController.selected.productionYear}" title="#{bundle.CreateCarTitle_year}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_year}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{carController.selected.color}" title="#{bundle.CreateCarTitle_color}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_color}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_bodyType}" for="bodyType" />
+                        <p:inputText id="bodyType" value="#{carController.selected.bodyType}" title="#{bundle.CreateCarTitle_bodyType}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_bodyType}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_priceH}" for="priceH" />
+                        <p:inputText id="priceH" value="#{carController.highPrice[0]}" title="#{bundle.CreateCarTitle_priceH}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_priceH}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_priceL}" for="priceL" />
+                        <p:inputText id="priceL" value="#{carController.highPrice[1]}" title="#{bundle.CreateCarTitle_priceL}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_priceL}"/>
+                        <p:outputLabel value="#{bundle.CreateCarLabel_priceM1}" for="priceM1" />
+                        <p:inputText id="priceM1" value="#{carController.highPrice[2]}" title="#{bundle.CreateCarTitle_priceM1}" required="true" requiredMessage="#{bundle.CreateCarRequiredMessage_priceM1}"/>
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{carController.create}" value="#{bundle.Save}" update="display1,:CarListForm:datalist,:growl" oncomplete="handleSubmit(args,'CarCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CarCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

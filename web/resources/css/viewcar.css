@@ -1,0 +1,97 @@
+.firstpanel {
+    border: black;
+    text-align: center !important;
+}
+
+.largetext {
+    font-size: 20px;
+    padding-left: 7px;
+}
+
+.ui-dialog-titlebar {
+    background: orange !important;
+    color: black !important;
+    text-shadow: none !important;
+}
+
+.firstcolumn {
+    width: 40% !important;
+}
+
+.secondcolumn {
+    width: 10% !important;
+    text-align: center !important;
+}
+
+.thirdcolumn {
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.fourthcolumn {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+  
+}
+
+.fifthcolumn {
+    
+    text-align: center !important;
+}
+
+.orangeBorderGrid {
+    width: 100%;
+}
+
+.orangeBorderGrid tr, .orangeBorderGrid td {
+    border-color: orange !important;
+    color: black !important;
+}
+
+.noneBorderGrid {
+    width: 100%;
+}
+
+.noneBorderGrid tr, .noneBorderGrid td {
+    border: none !important;
+    color: black !important;
+}
+
+
+
+.blackBox .ui-chkbox-box {
+    background: transparent !important;
+    border: solid black !important;
+}
+
+.blackBox .ui-chkbox-box.ui-state-disabled {
+    border: solid black !important;
+    opacity: 0.9 !important;
+}
+
+.ui-carousel-page-links {
+    margin: 0px 1px;
+    height: 0px;
+    overflow: hidden;
+    padding: 7px 10px 8px;
+    display: none !important;
+    border: 0;
+}
+
+/*---------------------------------------------------*/
+
+.ui-datagrid-column {
+    width: 14.28% !important;
+}
+
+.ui-datagrid-column .ui-panel{
+    border-color: black !important;
+    text-align: center !important;
+}
+
+.ui-datagrid-content {
+    border: none !important;
+}
+

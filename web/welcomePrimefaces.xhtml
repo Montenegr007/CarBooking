@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+                <h:outputStylesheet name="css/index.css"/>
+                
+            </f:facet>
+            
+            <h:outputScript library="js" name="accordion.js"/>   
+           
+        </h:head>
+
+       
+        <h:body>
+                     
+            <h:form id="WelcomeForm">
+               
+               
+                <p:panel style="height: 100px; width: 1600px; margin: 0 auto; background-color: black; border: 0;">
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:outputLabel value="DRIVE" style="font-size: 65px; color: white;"/>
+                            <p:outputLabel value="&reg;" style="font-size: 20px; color: white;"/>
+                        </f:facet>
+                         <f:facet name="right">
+                         
+                             <p:commandButton id="login" value="LOG IN" styleClass="login" />
+                            
+                             <p:commandButton id="menuButton" value="MENU" icon="ui-icon-menu" styleClass="menu">
+                                 <p:slideMenu overlay="true" trigger="menuButton" my="left top" at="left bottom">
+                                     <p:menuitem value="Car rental"/>
+                                     <p:menuitem value="Truck rental"/>
+                                     <p:menuitem value="Best deals"/>
+                                     <p:menuitem value="Locations"/>
+                                     <p:submenu label="My reservation">
+                                         <p:menuitem value="Change reservation"/>
+                                         <p:menuitem value="Cancel reservation"/>
+                                         <p:menuitem value="MyDrive"/>
+                                     </p:submenu>
+                                     <p:submenu label="Rental services">
+                                         <p:menuitem value="Service overview"/>
+                                         <p:menuitem value="Drive cards"/>
+                                         <p:menuitem value="Rental information"/>
+                                     </p:submenu>
+                                     <p:menuitem value="For partners"/>
+                                     <p:menuitem value="Career with Drive"/>
+                                 </p:slideMenu>
+                             </p:commandButton>
+                             
+                               <p:selectOneMenu  value="#{indexController.locale}" onchange="submit()" valueChangeListener="#{indexController.localeChanged}">
+                                 <f:selectItem itemLabel="English" itemValue="English"/>
+                                 <f:selectItem itemLabel="Russian" itemValue="Russian"/> 
+                               </p:selectOneMenu>                             
+                            
+
+
+                        
+                             
+                        </f:facet>
+                    </p:toolbar>
+                                                    
+                </p:panel>
+                <p:panel style="height: 200px; width: 1600px; margin: 0 auto; border: 0;">
+                    
+                            <p:panelGrid>
+                                <p:row style="height: 30px;">
+                                    <p:column><p:outputLabel value="#{msg.PickupDate}"/></p:column>
+                                    <p:column><p:outputLabel value="RETURN"/></p:column>
+                                    <p:column><p:outputLabel value="PICKUP TIME"/></p:column>
+                                    <p:column><p:outputLabel value="RETURN TIME"/></p:column>
+                                    <p:column><p:outputLabel value=""/></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <div class="ui-inputgroup">
+                                            <p:inputText placeholder="Enter location"/>
+                                            <p:commandButton icon="ui-icon-location"/>  
+                                        </div>
+                                    </p:column>
+                                    <p:column>
+                                        <div class="ui-inputgroup">
+                                            <p:inputText placeholder="Enter location"/>
+                                            <p:commandButton icon="ui-icon-location"/>  
+                                        </div>
+                                    </p:column>
+                                    <p:column><p:calendar id="datetime" value="#{dealController.startDate}" pattern="yyyy-MM-dd HH:mm" showOn="button"/></p:column>
+                                    <p:column><p:calendar id="datetime1" value="#{dealController.endDate}" pattern="yyyy-MM-dd HH:mm" showOn="button"/></p:column>
+                                    <p:column><p:commandButton id="requestButton" icon="ui-icon-find" actionListener="#{dealController.freeCarList()}" styleClass="findbutton"/></p:column>           
+                                </p:row>
+                            </p:panelGrid>
+                       
+                       
+                    
+                </p:panel>
+               
+                <p:panel styleClass="main-panel"/>
+                
+                <p:accordionPanel  id="accordion" widgetVar="accordion" activeIndex="1">
+                    <p:tab title="SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE INFORMATION ABOUT SPECIAL OFFERS">
+                        
+                        <p:inputText/>
+                        &nbsp;
+                        <p:commandButton value="SUBSCRIBE"/>
+                        
+                    </p:tab>
+                
+                </p:accordionPanel>
+                
+                            
+                <p:panel style="height: 450px; width: 1600px; margin: 0 auto; border: 0; background: #f5f5f5;">
+                    <h3>Open world with Drive!</h3>
+                    
+                    <p style="font-size: medium;"> Drive company offers a wide range of car rental services, which allows you to fully satisfy the desires of customers.
+                                                   If you need a car in Russia temporarily or you are interested in car rental abroad, it will be good news for you that 
+                                                   our offices are in most major Russian cities, as well as in 170 countries of the world. By renting a car in one of them,
+                                                   you can return it to any other where the Avis car rental station is present."</p>
+                                                  
+                    <p style="font-size: medium;"> We offer additional equipment that will contribute to greater comfort on the go. These are child seats, winter tires, 
+                        ski mounts, anti-skid chains *, GPS and Wi-Fi devices. Short-term car rental from 1 day is our main service.</p>
+                    
+                    <h3>The advantages of the Drive rent a car:</h3>
+                    
+                    <p:panelGrid>
+                        <p:row>
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number1.png"/>
+                                    &nbsp;
+                                    <h:outputText value="Fast clearance" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number2.png"/>
+                                    &nbsp;
+                                    <h:outputText value="Free booking" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number1.png"/>
+                                    &nbsp;
+                                    <h:outputText value="Flexible rates" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number1.png"/>
+                                    &nbsp;
+                                    <h:outputText value="A wide range of cars" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number1.png"/>
+                                    &nbsp;
+                                    <h:outputText value="All cars are new" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number2.png"/>
+                                    &nbsp;
+                                    <h:outputText value="Different insurance options" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number1.png"/>
+                                    &nbsp;
+                                    <h:outputText value="24/7 support" style="font-size: 22px;"/>
+                                </div>
+                            </p:column>
+                            <p:column>
+                                <div class="ui-inputgroup">
+                                    <p:graphicImage name="css/icons/number1.png"/>
+                                    &nbsp;
+                                    <h:outputText value="Free promotions" style="font-size: 22px;"/>
+                                </div>
+                            </p:column> 
+                        </p:row>
+                        
+                        
+                    </p:panelGrid>
+                    
+                          
+                    <h3>We work for you and do everything in order to make car rental services as convenient and profitable as possible.</h3>
+                </p:panel>                               
+                <p:panel style="height: 200px; width: 1600px; margin: 0 auto; border: 0;">
+                    <p:panelGrid>
+                        <p:row>
+                            <p:column styleClass="centered">
+                                <p:graphicImage name="css/icons/pci2018_1.png"/>
+                            </p:column>
+                            <p:column styleClass="centered">
+                                <p:graphicImage name="css/icons/best1.png"/>
+                            </p:column>
+                            <p:column styleClass="centered">
+                                <p:graphicImage name="css/icons/ssl1.jpg"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </p:panel>
+                
+                
+                
+                
+                
+                <p:panel style="height: 400px; width: 1600px; margin: 0 auto; background-color: #1b201a; border: 0;"/>
+                <p:panel style="height: 80px; width: 1600px; margin: 0 auto;  border: 0; background: black !important;">
+                   
+                    <p:toolbar>
+                        <f:facet name="left" class="downgroup">
+                            <h:outputLink>Contacts</h:outputLink>
+                            <h:outputLink>Drive group</h:outputLink>
+                            <h:outputLink>Career with Drive</h:outputLink>
+                            <h:outputLink>Drive partners</h:outputLink>
+                            <h:outputLink>Drive news</h:outputLink>
+                            <h:outputLink>Imprint&amp;Privacy</h:outputLink>
+                            <h:outputLink>Terms&amp;Conditions</h:outputLink>
+                        </f:facet>
+                        <f:facet name="right" class="downgroup">
+                            <h:outputLink><p:graphicImage name="css/icons/facebook4.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/instagram.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/twitter.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/youtube.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/snapchat.png"/></h:outputLink>
+                        </f:facet>
+                    </p:toolbar>
+                
+                </p:panel>
+               
+                
+                
+            </h:form>
+                    
+                     
+
+        </h:body>
+
+    </f:view>
+</html>
+

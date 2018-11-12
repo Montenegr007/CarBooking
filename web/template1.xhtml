@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Drive rent a car</ui:insert></title>
+        <h:outputStylesheet library="css" name="freecar.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <h:form>
+        <p:growl id="growl" life="3000" />
+        
+                <p:panel style="height: 100px; width: 1600px; margin: 0 auto; background-color: black; border: 0;">
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:outputLabel value="DRIVE" style="font-size: 65px; color: white;"/>
+                            <p:outputLabel value="&reg;" style="font-size: 20px; color: white;"/>
+                        </f:facet>
+                         <f:facet name="right">
+                             <p:menuButton value="LANGUAGE" styleClass="firstmenubutton" icon="ui-icon-language">
+                                 <p:menuitem value="English"/>
+                                 <p:menuitem value="Russian"/>
+                             </p:menuButton>
+                             <p:commandButton id="login" value="LOG IN" styleClass="login" />
+                             <p:commandButton id="menuButton" value="MENU" icon="ui-icon-menu" styleClass="menu">
+                                 <p:slideMenu overlay="true" trigger="menuButton" my="left top" at="left bottom">
+                                     <p:menuitem value="Car rental"/>
+                                     <p:menuitem value="Truck rental"/>
+                                     <p:menuitem value="Best deals"/>
+                                     <p:menuitem value="Locations"/>
+                                     <p:submenu label="My reservation">
+                                         <p:menuitem value="Change reservation"/>
+                                         <p:menuitem value="Cancel reservation"/>
+                                         <p:menuitem value="MyDrive"/>
+                                     </p:submenu>
+                                     <p:submenu label="Rental services">
+                                         <p:menuitem value="Service overview"/>
+                                         <p:menuitem value="Drive cards"/>
+                                         <p:menuitem value="Rental information"/>
+                                     </p:submenu>
+                                     <p:menuitem value="For partners"/>
+                                     <p:menuitem value="Career with Drive"/>
+                                 </p:slideMenu>
+                             </p:commandButton>
+                        </f:facet>
+                    </p:toolbar>
+                </p:panel>
+</h:form>
+         
+                <ui:insert name="body"/>
+          
+
+      
+
+    </h:body>
+
+</html>
