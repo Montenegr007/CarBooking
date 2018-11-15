@@ -1,11 +1,35 @@
 .firstpanel {
-    border: black;
+    border-color: black;
     text-align: center !important;
+    color: black !important;
+}
+
+.secondpanel {
+    border-color: black;
+    text-align: center !important;
+    color: black !important;
+    
+}
+
+.ui-panel-titlebar {
+    background: orange;
+    color: black;
+    text-shadow: none;
+}
+
+.ui-panel-title {
+    margin-right: 0 !important;
+   
 }
 
 .largetext {
     font-size: 20px;
     padding-left: 7px;
+}
+
+.smalltext {
+    color: black;
+   
 }
 
 .ui-dialog-titlebar {
@@ -38,6 +62,12 @@
 
 .fifthcolumn {
     
+    text-align: center !important;
+}
+
+.sixthcolumn {
+    width: 14.28% !important;
+    padding: 2px 2px 2px 2px !important;
     text-align: center !important;
 }
 
