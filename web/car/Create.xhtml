@@ -8,18 +8,20 @@
 
     <ui:composition>
 
-        <p:dialog id="CarCreateDlg" widgetVar="CarCreateDialog" modal="true" resizable="false" width="900" height="800" appendTo="@(body)" header="#{msg.CreateCarTitle}">
+        <p:dialog id="CarCreateDlg" widgetVar="CarCreateDialog" modal="true" resizable="false" width="1300" height="800" appendTo="@(body)" header="#{msg.CreateCarTitle}">
             <h:form id="CarCreateForm">
                 <h:panelGroup id="display">
                     <p:accordionPanel multiple="true" activeIndex="0,1,2,3,4,5,6" >
                         <p:tab title="Common">
-                            <p:panelGrid columns="6" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                            <p:panelGrid columns="7" style="width: 100%; border: 0px;" styleClass="ui-noborder">
+                                <h:outputLabel value="Class"  style="font-size: 14px;"/>
                                 <h:outputLabel value="Brand"  style="font-size: 14px;"/>
                                 <h:outputLabel value="Model" style="font-size: 14px;"/>
                                 <h:outputLabel value="License plate No" style="font-size: 14px;"/>
                                 <h:outputLabel value="Year of manufacture" style="font-size: 14px;"/>
                                 <h:outputLabel value="Body color" style="font-size: 14px;"/>
                                 <h:outputLabel value="Body type" style="font-size: 14px;"/>
+                                <p:inputText id="class" value="#{carController.selected.carClass}" style="width: 100px;"/>
                                 <p:inputText id="brand" value="#{carController.selected.brand}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_brand}" style="width: 100px;"/>
                                 <p:inputText id="model" value="#{carController.selected.model}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_model}" style="width: 100px;"/>
                                 <p:inputText id="plateNo" value="#{carController.selected.plateNo}" style="width: 100px;"/>
@@ -50,26 +52,73 @@
                             </p:panelGrid> 
 
                         </p:tab>
+                        
                         <p:tab title="Price">
+                            
                             <p:panelGrid style="width: 100%">
                                 <p:row style="width: 100%">
                                     <p:column/>
                                     <p:column>
-                                       <p:inputText value="#{carController.pricePeriod[1]}" style="width: 20px;"/>
-                                       &nbsp;
-                                       <p:inputText value="#{carController.pricePeriod[1]}" style="width: 20px;"/>
+                                        <p:inputText value="#{carController.priceIntervals[0]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[1]}" style="width: 20px;"/>
 
-                                         <!-- <p:inputText value="#{carController.pricePeriod[0]}" style="width: 50px;"/> -->
+                                        
                                     </p:column>
-                                    <p:column><p:inputText value="#{carController.pricePeriod[1]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[2]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[3]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[4]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[5]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[6]}" style="width: 50px;"/></p:column> 
+                                     <p:column>
+                                         <p:inputText value="#{carController.priceIntervals[2]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[3]}" style="width: 20px;"/>
+
+                                        
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{carController.priceIntervals[4]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[5]}" style="width: 20px;"/>
+
+                                       
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{carController.priceIntervals[6]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[7]}" style="width: 20px;"/>
+
+                                    
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{carController.priceIntervals[8]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[9]}" style="width: 20px;"/>
+
+                                       
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{carController.priceIntervals[10]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[11]}" style="width: 20px;"/>
+
+                                       
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{carController.priceIntervals[12]}" style="width: 20px;"/>
+                                       <h:outputText value=" - "/>
+                                       <p:inputText value="#{carController.priceIntervals[13]}" style="width: 20px;"/>
+
+                                       
+                                    </p:column>
+                             
                                 </p:row>
                                 <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="High season (01.06 - 31.08)"/></p:column>
+                                    <p:column>
+                                       <h:outputText value="High season:"/> 
+                                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                       <p:calendar value="#{carController.highSeason[0]}" pattern="dd-MM-yy"/> 
+                                       <h:outputText value=" - "/>
+                                       <p:calendar value="#{carController.highSeason[1]}" pattern="dd-MM-yy"/> 
+
+                                       
+                                    </p:column>
                                     <p:column><p:inputText id="priceH0" value="#{carController.highPrice[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
                                     <p:column><p:inputText id="priceH1" value="#{carController.highPrice[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
                                     <p:column><p:inputText id="priceH2" value="#{carController.highPrice[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
@@ -78,18 +127,17 @@
                                     <p:column><p:inputText id="priceH5" value="#{carController.highPrice[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
                                     <p:column><p:inputText id="priceH6" value="#{carController.highPrice[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
                                 </p:row>
+                                
                                 <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="Low season (01.11 - 14.04)"/></p:column>
-                                    <p:column><p:inputText id="priceL0" value="#{carController.lowPrice[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
-                                    <p:column><p:inputText id="priceL1" value="#{carController.lowPrice[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL2" value="#{carController.lowPrice[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL3" value="#{carController.lowPrice[3]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL4" value="#{carController.lowPrice[4]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL5" value="#{carController.lowPrice[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL6" value="#{carController.lowPrice[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                </p:row>
-                                <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="Medium season (01.09 - 31.10)"/></p:column>
+                                    <p:column>
+                                        <h:outputText value="Medium season #1:"/> 
+                                        &nbsp;
+                                        <p:calendar value="#{carController.medium1Season[0]}" pattern="dd-MM-yy"/> 
+                                       <h:outputText value=" - "/>
+                                       <p:calendar value="#{carController.medium1Season[1]}" pattern="dd-MM-yy"/> 
+
+                                       
+                                    </p:column>
                                     <p:column><p:inputText id="priceM10" value="#{carController.medium1Price[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
                                     <p:column><p:inputText id="priceM11" value="#{carController.medium1Price[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
                                     <p:column><p:inputText id="priceM12" value="#{carController.medium1Price[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
@@ -99,7 +147,15 @@
                                     <p:column><p:inputText id="priceM16" value="#{carController.medium1Price[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>  
                                 </p:row>
                                 <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="Medium season #2 (15.04 - 31.05)"/></p:column>
+                                    <p:column>
+                                       <h:outputText value="Medium season #2:"/> 
+                                       &nbsp;
+                                       <p:calendar value="#{carController.medium2Season[0]}" pattern="dd-MM-yy"/> 
+                                       <h:outputText value=" - "/>
+                                       <p:calendar value="#{carController.medium2Season[1]}" pattern="dd-MM-yy"/> 
+
+                                       
+                                    </p:column>
                                     <p:column><p:inputText id="priceM20" value="#{carController.medium2Price[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
                                     <p:column><p:inputText id="priceM21" value="#{carController.medium2Price[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
                                     <p:column><p:inputText id="priceM22" value="#{carController.medium2Price[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
@@ -108,10 +164,31 @@
                                     <p:column><p:inputText id="priceM25" value="#{carController.medium2Price[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
                                     <p:column><p:inputText id="priceM26" value="#{carController.medium2Price[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>  
                                 </p:row>
+                                
+                                                    
+                                <p:row style="width: 100%">
+                                    <p:column>
+                                        <h:outputText value="Low season:"/> 
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <p:calendar value="#{carController.lowSeason[0]}" pattern="dd-MM-yy"/> 
+                                       <h:outputText value=" - "/>
+                                       <p:calendar value="#{carController.lowSeason[1]}" pattern="dd-MM-yy"/> 
+
+                                       
+                                    </p:column>
+                                    <p:column><p:inputText id="priceL0" value="#{carController.lowPrice[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
+                                    <p:column><p:inputText id="priceL1" value="#{carController.lowPrice[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
+                                    <p:column><p:inputText id="priceL2" value="#{carController.lowPrice[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
+                                    <p:column><p:inputText id="priceL3" value="#{carController.lowPrice[3]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
+                                    <p:column><p:inputText id="priceL4" value="#{carController.lowPrice[4]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
+                                    <p:column><p:inputText id="priceL5" value="#{carController.lowPrice[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
+                                    <p:column><p:inputText id="priceL6" value="#{carController.lowPrice[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
+                                </p:row>
+                                
                             </p:panelGrid>
-
-
+                            
                         </p:tab>
+                        
                         <p:tab title="Mileage limit">
 
                             <p:panelGrid style="width: 100%; border: 0px;">
@@ -151,6 +228,7 @@
                             </p:panelGrid> 
 
                         </p:tab>
+                        
                         <p:tab title="Insurance">
 
                             <p:panelGrid style="width: 100%; border: 0px;">
@@ -286,17 +364,26 @@
                                     <f:selectItem itemLabel="Electricity" itemValue="Electricity" />
                                 </p:selectOneMenu>
                                 <h:outputLabel value="ABS" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.absystem}"/>
+                                <p:selectOneMenu value="#{carController.selected.absystem}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                                 <h:outputLabel value="Tank (l.)" style="font-size: 14px;"/>
                                 <p:inputText value="#{carController.selected.tank}" style="width: 150px;"/>
                                 <h:outputLabel value="EBD" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.ebd}"/>
+                                <p:selectOneMenu value="#{carController.selected.ebd}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                                 <h:outputLabel value="Fuel consumption (l/100km)" style="font-size: 14px;"/>
                                 <p:inputText value="#{carController.selected.fuelConsumption}" style="width: 150px;"/>
                                 <h:outputLabel value="ESP" style="font-size: 14px;"/>
-                                <p:selectBooleanCheckbox value="#{carController.selected.esp}"/>
+                                <p:selectOneMenu value="#{carController.selected.esp}" style="width: 150px;">
+                                    <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                                    <f:selectItem itemLabel="No" itemValue="No" />
+                                </p:selectOneMenu>
 
                             </p:panelGrid> 
 
@@ -459,9 +546,14 @@
                     </p:accordionPanel>
                     <p:commandButton actionListener="#{carController.create}" value="#{msg.Save}" update="display,:CarListForm:datalist,:growl" oncomplete="handleSubmit(args,'CarCreateDialog');"/>
                     <p:commandButton value="#{msg.Cancel}" onclick="CarCreateDialog.hide()"/>
+                   
                 </h:panelGroup>
+               
             </h:form>
+            
+            
         </p:dialog>
-
-    </ui:composition>
+          
+      </ui:composition>
+    
 </html>

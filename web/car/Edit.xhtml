@@ -51,60 +51,7 @@
 
                         </p:tab>
                         <p:tab title="Price">
-                            <p:panelGrid style="width: 100%">
-                              <!-- <p:row style="width: 100%">
-                                    <p:column/>
-                                    <p:column><p:inputText value="#{carController.pricePeriod[0]}" style="width: 50px;"/></p:column>
-                                    <p:column><p:inputText value="#{carController.pricePeriod[1]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[2]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[3]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[4]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[5]}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText value="#{carController.pricePeriod[6]}" style="width: 50px;"/></p:column> 
-                                </p:row>
-                                <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="High season (01.06 - 31.08)"/></p:column>
-                                    <p:column><p:inputText id="priceH0" value="#{carController.highPrice[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
-                                    <p:column><p:inputText id="priceH1" value="#{carController.highPrice[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceH2" value="#{carController.highPrice[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceH3" value="#{carController.highPrice[3]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceH4" value="#{carController.highPrice[4]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceH5" value="#{carController.highPrice[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceH6" value="#{carController.highPrice[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                </p:row>
-                                <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="Low season (01.11 - 14.04)"/></p:column>
-                                    <p:column><p:inputText id="priceL0" value="#{carController.lowPrice[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
-                                    <p:column><p:inputText id="priceL1" value="#{carController.lowPrice[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL2" value="#{carController.lowPrice[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL3" value="#{carController.lowPrice[3]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL4" value="#{carController.lowPrice[4]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL5" value="#{carController.lowPrice[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceL6" value="#{carController.lowPrice[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                </p:row>
-                                <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="Medium season (01.09 - 31.10)"/></p:column>
-                                    <p:column><p:inputText id="priceM10" value="#{carController.medium1Price[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
-                                    <p:column><p:inputText id="priceM11" value="#{carController.medium1Price[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM12" value="#{carController.medium1Price[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM13" value="#{carController.medium1Price[3]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM14" value="#{carController.medium1Price[4]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM15" value="#{carController.medium1Price[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM16" value="#{carController.medium1Price[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>  
-                                </p:row>
-                                <p:row style="width: 100%">
-                                    <p:column><h:outputLabel value="Medium season #2 (15.04 - 31.05)"/></p:column>
-                                    <p:column><p:inputText id="priceM20" value="#{carController.medium2Price[0]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>
-                                    <p:column><p:inputText id="priceM21" value="#{carController.medium2Price[1]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM22" value="#{carController.medium2Price[2]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM23" value="#{carController.medium2Price[3]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM24" value="#{carController.medium2Price[4]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM25" value="#{carController.medium2Price[5]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column> 
-                                    <p:column><p:inputText id="priceM26" value="#{carController.medium2Price[6]}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_priceH}" style="width: 50px;"/></p:column>  
-                                </p:row>   -->
-                            </p:panelGrid>
-
-
+                            
                         </p:tab>
                         <p:tab title="Mileage limit">
 

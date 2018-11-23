@@ -14,8 +14,10 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -42,10 +44,17 @@ public class DealController implements Serializable {
     private List<Car> freeCars = null;
     private List<String> dates = null;
     
+    private String[] selectedPrice;
+    
     private Date startDate;
     private Date endDate;
     
+    
     public DealController() {
+    }
+
+    public String[] getSelectedPrice() {
+        return selectedPrice;
     }
 
     public List<String> getDates() {
@@ -108,7 +117,7 @@ public class DealController implements Serializable {
     public void setFreeCars(List<Car> freeCars) {
         this.freeCars = freeCars;
     }
-    
+
     protected void setEmbeddableKeys() {
     }
 
@@ -137,21 +146,25 @@ public class DealController implements Serializable {
         dates.add(sDate);
         dates.add(eDate);
         dates.add(delta);
-             
+        
+                  
        try{    
         freeCars = ejbFacade.listOfFreeCars(startDate, endDate);
-        System.out.println();
-        System.out.println();
         
-        freeCars.stream().forEach(System.out::println);
-       
        }catch (Exception e) {
            System.out.println("Что то пошло не так!");
        }
+       
+       
         
         FacesContext.getCurrentInstance().getExternalContext().redirect("FreeCars.xhtml"); 
     }
     
+    public Car prepareSelectedCar(){
+        selectedCar = new Car();
+        
+        return selectedCar;
+    }
     
     public Deal prepareCreate() {
         selected = new Deal();

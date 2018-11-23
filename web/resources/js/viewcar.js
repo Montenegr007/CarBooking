@@ -1,18 +1,48 @@
-function showPrice(days){
-     for(var i=0; i<7; i++) {
-            var headerContent = document.getElementById("CarViewForm:ap" + i + "_header").innerHTML;
-            var header = document.getElementById("CarViewForm:ap" + i + "_header");
-            var panel = document.getElementById("CarViewForm:ap" + i);
-    
-       if(headerContent.includes(days)){
-            header.style.cssText="background: orange; color: black";
-            panel.style.cssText="height: 70px";
+function showPrice(){
+        
+       var days = parseInt(document.getElementById("CarViewForm:numOfDays").innerHTML);
+        
+        if(document.getElementById("CarViewForm:ot1") === null ){
             
-            }else {
-                header.style.cssText="background: orange; opacity: 0.4";
+              
+        for(var i=2; i<=14; i++){
+            var interval = parseInt(document.getElementById("CarViewForm:ot" + i).innerHTML);
+            var interval1 = parseInt(document.getElementById("CarViewForm:ot" + (i+1)).innerHTML);
+            if(days >= interval && days <= interval1){
+                var panelNum = Math.ceil(i/2);
+                var pricePanel = document.getElementById("CarViewForm:pricePanel" + panelNum);
+                var dayPanel = document.getElementById("CarViewForm:dayPanel" + panelNum);
+                var price = document.getElementById("CarViewForm:price" + panelNum).innerHTML;
+                pricePanel.style.cssText="background: orange !important; color: black !important";
+                dayPanel.style.cssText="background: orange !important; color: black !important";
+                document.getElementById("CarViewForm:rentPrice").innerHTML = parseInt(price) * days;
+                document.getElementById("CarViewForm:totalPrice").innerHTML = parseInt(price) * days;
+                
             }
+        } 
+        
+        if(document.getElementById("CarViewForm:ot1") !== null ){
+            
+              
+        for(var i=1; i<=14; i++){
+            var interval = parseInt(document.getElementById("CarViewForm:ot" + i).innerHTML);
+            var interval1 = parseInt(document.getElementById("CarViewForm:ot" + (i+1)).innerHTML);
+            if(days >= interval && days <= interval1){
+                var panelNum = Math.ceil(i/2);
+                var pricePanel = document.getElementById("CarViewForm:pricePanel" + panelNum);
+                var dayPanel = document.getElementById("CarViewForm:dayPanel" + panelNum);
+                var price = document.getElementById("CarViewForm:price" + panelNum).innerHTML;
+                pricePanel.style.cssText="background: orange !important; color: black !important";
+                dayPanel.style.cssText="background: orange !important; color: black !important";
+                document.getElementById("CarViewForm:rentPrice").innerHTML = parseInt(price) * days;
+                document.getElementById("CarViewForm:totalPrice").innerHTML = parseInt(price) * days;
+                
             }
-       }
+        } 
+                
+          }
+       } 
+   }
 
 
 

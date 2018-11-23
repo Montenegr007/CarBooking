@@ -8,14 +8,9 @@ package sessions;
 import entities.Car;
 import entities.Deal;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,8 +27,6 @@ public class DealFacade extends AbstractFacade<Deal> {
     @PersistenceContext(unitName = "CarBookingPU2")
     private EntityManager em;
     
-    private List<Car> freeCars;
-   
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -45,9 +38,8 @@ public class DealFacade extends AbstractFacade<Deal> {
     
     public List<Car> listOfFreeCars(Date date1, Date date2){
         
-        freeCars = new ArrayList();
-        
-              
+        List<Car> freeCars = new ArrayList();
+                  
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String sDate = formatter.format(date1);
         String eDate = formatter.format(date2);
@@ -55,6 +47,7 @@ public class DealFacade extends AbstractFacade<Deal> {
         System.out.println(date1);
         System.out.println(date2);
         
+               
        
     //    Query query;
     //            query = em.createNativeQuery(
@@ -65,28 +58,35 @@ public class DealFacade extends AbstractFacade<Deal> {
         List<Long> list = query.getResultList();
         
         for(Long l : list) {
-            System.out.println(l);
             TypedQuery<Car> query1 = em.createQuery("SELECT c FROM Car c WHERE c.carId = :carId", Car.class);
             query1.setParameter("carId", l);
-            
-           // System.out.println(query1.getSingleResult().getCarId());
+      
             
             try{
                 Car c = query1.getSingleResult();
                 freeCars.add(c);
+          
+                
+                                              
             } catch(Exception e){
                 System.out.println("Car with ID = " + l + " не добавилась в коллекцию!");
             }
-            
-          //  freeCars = query1.getResultList();
-            
-            
-           
-          //  freeCars.add(query1.getResultList().get(0));
-            
         }
         
-        System.out.println(freeCars.size());
+           
+       
+        for(Car c : freeCars){
+            for(int i = 0; i< c.getSeasonInterval().size(); i++){
+               if(c.getSeasonInterval().get(i)[0].before(date1)&& c.getSeasonInterval().get(i)[1].after(date2)){
+                    c.setActualPrice(c.getSeasonPrice().get(i));
+                   
+                    
+                }
+            }
+        }
+        
+       
+    
         
         return freeCars;
        

@@ -125,3 +125,30 @@
     border: none !important;
 }
 
+.calendar {
+    border: none !important;
+}
+
+.calendar input {
+    background: transparent !important;
+    border: none !important;
+    height: 20px !important;
+    width: 35px !important;
+    font-weight: bold !important;
+}
+
+.calendar .ui-state-disabled {
+    opacity: 1;
+    
+}
+
+.mypanel{
+   border-color: black;
+}
+
+
+
+
+
+
+

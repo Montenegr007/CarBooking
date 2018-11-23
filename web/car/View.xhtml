@@ -10,70 +10,125 @@
         
         <h:outputStylesheet name="css/viewcar.css"/>
         <h:outputScript name="js/viewcar.js"/>
-
-        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" width="900" resizable="false" appendTo="@(body)" header="CAR DETAILS" onShow="showPrice(#{dealController.dates.get(2)})">
+        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" width="1000" resizable="false" appendTo="@(body)" header="CAR DETAILS" onShow="showPrice()">
             
             <h:form id="CarViewForm">
           
                 <h:panelGroup id="display">
-                   
-                   
+                    
+              
                     <p:panelGrid style="width: 100%" styleClass="noneBorderGrid">
-                       
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap0" header="#{carController.selected.pricePeriod[0]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[0]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>  
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap1" header="#{carController.selected.pricePeriod[1]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[1]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap2" header="#{carController.selected.pricePeriod[2]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[2]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap3" header="#{carController.selected.pricePeriod[3]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[3]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap4" header="#{carController.selected.pricePeriod[4]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[4]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap5" header="#{carController.selected.pricePeriod[5]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[5]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>
-                        <p:column styleClass="sixthcolumn">
-                            <p:panel id="ap6" header="#{carController.selected.pricePeriod[6]} days" styleClass="secondpanel">
-                                <h:outputText value="#{carController.selected.priceH[6]} &euro;/day" styleClass="smalltext"/>
-                            </p:panel>
-                        </p:column>
-                        
-
-                    </p:panelGrid> 
-
-                              
-                    <p:panelGrid style="width: 100%; height: 80px; margin-top: 10px;" rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
+                       <p:row>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel1" styleClass="mypanel">
+                                <h:outputText id="ot1" value="#{carController.selected.priceInterval[0]}" rendered="#{carController.selected.priceInterval[0] != 0}"/>
+                                <h:outputText value=" - " rendered="#{carController.selected.priceInterval[0] != 0}"/>
+                                <h:outputText id="ot2" value="#{carController.selected.priceInterval[1]}"/>
+                                <h:outputText value=" day" rendered="#{carController.selected.priceInterval[0] == 0}"/>
+                                <h:outputText value=" days" rendered="#{carController.selected.priceInterval[0] != 0}"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel2" styleClass="mypanel">
+                                <h:outputText id="ot3" value="#{carController.selected.priceInterval[2]}"/>
+                                <h:outputText value=" - "/>
+                                <h:outputText id="ot4" value="#{carController.selected.priceInterval[3]} days"/>
+                                 </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel3" styleClass="mypanel">
+                                <h:outputText id="ot5" value="#{carController.selected.priceInterval[4]}"/>
+                                <h:outputText value=" - "/>
+                                <h:outputText id="ot6" value="#{carController.selected.priceInterval[5]} days"/>
+                                 </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel4" styleClass="mypanel">
+                                <h:outputText id="ot7" value="#{carController.selected.priceInterval[6]}"/>
+                                <h:outputText value=" - "/>
+                                <h:outputText id="ot8" value="#{carController.selected.priceInterval[7]} days"/>
+                                 </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel5" styleClass="mypanel">
+                                <h:outputText id="ot9" value="#{carController.selected.priceInterval[8]}"/>
+                                <h:outputText value=" - "/>
+                                <h:outputText id="ot10" value="#{carController.selected.priceInterval[9]} days"/>
+                                 </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel6" styleClass="mypanel">
+                                <h:outputText id="ot11" value="#{carController.selected.priceInterval[10]}"/>
+                                <h:outputText value=" - "/>
+                                <h:outputText id="ot12" value="#{carController.selected.priceInterval[11]} days"/>
+                                 </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="dayPanel7" styleClass="mypanel">
+                                <h:outputText id="ot13" value="#{carController.selected.priceInterval[12]}"/>
+                                <h:outputText value=" - "/>
+                                <h:outputText id="ot14" value="#{carController.selected.priceInterval[13]} days"/>
+                                 </p:panel>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel1" styleClass="mypanel">
+                                <h:outputText id="price1" value="#{carController.selected.actualPrice[0]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel2" styleClass="mypanel">
+                                <h:outputText id="price2" value="#{carController.selected.actualPrice[1]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel3" styleClass="mypanel">
+                                <h:outputText id="price3" value="#{carController.selected.actualPrice[2]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel4" styleClass="mypanel">
+                                    <h:outputText id="price4" value="#{carController.selected.actualPrice[3]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel5" styleClass="mypanel">
+                                <h:outputText id="price5" value="#{carController.selected.actualPrice[4]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel6" styleClass="mypanel">
+                                <h:outputText id="price6" value="#{carController.selected.actualPrice[5]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                            <p:column styleClass="sixthcolumn">
+                                <p:panel id="pricePanel7" styleClass="mypanel">
+                                <h:outputText id="price7"  value="#{carController.selected.actualPrice[6]} &euro;/day"/>
+                                </p:panel>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>  
+                    
+                     <p:panelGrid style="width: 400px; height: 80px; margin-top: 10px;" rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
                        
                         <p:row >
                             <p:column colspan="3">
                                 <h:outputText value="#{carController.selected.brand} #{carController.selected.model}" styleClass="largetext"/>
-                                &nbsp;
-                                &nbsp;
-                                <h:outputText value="From #{dealController.dates.get(0)} to #{dealController.dates.get(1)} - #{dealController.dates.get(2)} days"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="From #{dealController.dates.get(0)} to #{dealController.dates.get(1)}"/>
+                            </p:column>
+                             <p:column>
+                                <h:outputText id="numOfDays" value="#{dealController.dates.get(2)}"/>
+                                <h:outputText value="days"/>
                             </p:column>
                             
                             
                         </p:row>
                     </p:panelGrid>
-                  
+                 
+                    <br/>
                     
                     <p:panelGrid style="width: 100%" rendered="#{carController.selected != null}" styleClass="orangeBorderGrid">
                         
@@ -688,16 +743,16 @@
                         
                         <p:row>
                             <p:column>
-                                <h:outputText id="rentPrice" value="#{dealController.dates.get(2) * carController.selected.priceH[2]}"/>
+                                <h:outputText id="rentPrice"/>
                             </p:column>
                             <p:column>
-                                <h:outputText id="deliveryPrice" value="#{carController.selected.priceH[3]}"/>
+                                <h:outputText id="deliveryPrice" value=""/>
                             </p:column>
                             <p:column>
                                 <h:outputText id="addPrice" value="0"/>
                             </p:column>
                             <p:column>
-                                <h:outputText id="totalPrice" value="#{dealController.dates.get(2) * carController.selected.priceH[2] + carController.selected.priceH[3]}"/>
+                                <h:outputText id="totalPrice"/>
                             </p:column>
                         </p:row>
                         
@@ -711,7 +766,7 @@
                         
                         <p:row>
                             <p:column>
-                                <p:commandButton value="JS" onclick="f()"/>
+                                <p:commandButton value="JS" onclick="showPrice()"/>
                                 
                                 <script>
                                     function my1(price){
@@ -739,6 +794,12 @@
                                         }
                                   
                                                             
+                                    }
+                                </script>
+                                
+                                <script>
+                                    function l(){
+                                       
                                     }
                                 </script>
                                

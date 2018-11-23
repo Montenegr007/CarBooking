@@ -158,7 +158,7 @@
                                 <p:row>
                                     <p:column colspan="2">
                                         <p:commandButton style="width: 100%; height: 100%; padding: 0;" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
-                                            <f:setPropertyActionListener value="#{car}" target="#{carController.selected}" />
+                                            <f:setPropertyActionListener value="#{car}" target="#{dealController.selectedCar}" />
                                         </p:commandButton>
                                     </p:column>
                                 </p:row>

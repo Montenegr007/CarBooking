@@ -3,14 +3,12 @@ package controllers;
 import entities.Car;
 import controllers.util.JsfUtil;
 import controllers.util.JsfUtil.PersistAction;
-import entities.PricePeriod;
 import sessions.CarFacade;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,22 +29,28 @@ public class CarController implements Serializable {
     private sessions.CarFacade ejbFacade;
     private List<Car> items = null;
     
-    private List<Car> freeItems = null;
-    
-        
     private Car selected;
-    private String[] highPrice;
-    private String[] lowPrice;
-    private String[] medium1Price;
-    private String[] medium2Price;
-    private String[] pricePeriod;
-      
     
-
+    private final Integer[] priceIntervals = new Integer[14];
+    
+    private final Integer[] highPrice = new Integer[7];
+    private final Integer[] medium1Price = new Integer[7];
+    private final Integer[] medium2Price = new Integer[7];
+    private final Integer[] lowPrice = new Integer[7];
+    List<Integer[]> prices = null;
+    
+    private final Date[] highSeason = new Date[2];
+    private final Date[] lowSeason = new Date[2];
+    private final Date[] medium1Season = new Date[2];
+    private final Date[] medium2Season = new Date[2];
+    List<Date[]> seasons = null;
+    
+    
+    
+    
     public CarController() {
     }
 
-    
     public Car getSelected() {
         return selected;
     }
@@ -55,51 +59,6 @@ public class CarController implements Serializable {
         this.selected = selected;
     }
 
-    public String[] getPricePeriod() {
-        return pricePeriod;
-    }
-
-    public String[] getHighPrice() {
-        return highPrice;
-    }
-
-    public void setHighPrice(String[] highPrice) {
-        this.highPrice = highPrice;
-    }
-
-    public String[] getLowPrice() {
-        return lowPrice;
-    }
-
-    public void setLowPrice(String[] lowPrice) {
-        this.lowPrice = lowPrice;
-    }
-
-    public String[] getMedium1Price() {
-        return medium1Price;
-    }
-
-    public void setMedium1Price(String[] medium1Price) {
-        this.medium1Price = medium1Price;
-    }
-
-    public String[] getMedium2Price() {
-        return medium2Price;
-    }
-
-    public void setMedium2Price(String[] medium2Price) {
-        this.medium2Price = medium2Price;
-    }
-
-    public List<Car> getFreeItems() {
-        return freeItems;
-    }
-
-    public void setFreeItems(List<Car> freeItems) {
-        this.freeItems = freeItems;
-    }
-    
-    
     protected void setEmbeddableKeys() {
     }
 
@@ -109,28 +68,77 @@ public class CarController implements Serializable {
     private CarFacade getFacade() {
         return ejbFacade;
     }
+
+    public CarFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public Integer[] getPriceIntervals() {
+        return priceIntervals;
+    }
+
+    public Integer[] getHighPrice() {
+        return highPrice;
+    }
+
+    public Integer[] getMedium1Price() {
+        return medium1Price;
+    }
+
+    public Integer[] getMedium2Price() {
+        return medium2Price;
+    }
+
+    public Integer[] getLowPrice() {
+        return lowPrice;
+    }
+
+    public List<Integer[]> getPrices() {
+        return prices;
+    }
+
+    public Date[] getHighSeason() {
+        return highSeason;
+    }
+
+    public Date[] getLowSeason() {
+        return lowSeason;
+    }
+
+    public Date[] getMedium1Season() {
+        return medium1Season;
+    }
+
+    public Date[] getMedium2Season() {
+        return medium2Season;
+    }
+
+    public List<Date[]> getSeasons() {
+        return seasons;
+    }
     
-   
-    public Car prepareCreate() {
-        highPrice = new String[7];
-        lowPrice = new String[7];
-        medium1Price = new String[7];
-        medium2Price = new String[7];
-        pricePeriod = new String[7];
+    
+     public Car prepareCreate() {    
+                
+        prices = new ArrayList();
+        prices.add(highPrice);
+        prices.add(medium1Price);
+        prices.add(medium2Price);
+        prices.add(lowPrice);
         
-        for(int i=0; i<7; i++){
-            System.out.println(pricePeriod[i]);
-        }
-            
+        seasons = new ArrayList();
+        seasons.add(highSeason);
+        seasons.add(medium1Season);
+        seasons.add(medium2Season);
+        seasons.add(lowSeason);
+        
         selected = new Car();
-        selected.setPriceH(highPrice);
-        selected.setPriceL(lowPrice);
-        selected.setPriceM1(medium1Price);
-        selected.setPriceM2(medium2Price);
-        selected.setPricePeriod(pricePeriod);
-
+        
+        selected.setPriceInterval(priceIntervals);
+        selected.setSeasonPrice(prices);
+        selected.setSeasonInterval(seasons);
+        
         initializeEmbeddableKey();
-
         return selected;
     }
 
