@@ -188,7 +188,7 @@
 }
 
 .ui-button-text {
-    color: white ! important;
+    color: white;
     text-shadow: none ! important;
     padding-right: 5px;
     font-weight: normal;

@@ -9,15 +9,10 @@ import sessions.DealFacade;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -28,6 +23,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.context.RequestContext;
 
 @Named("dealController")
 @SessionScoped
@@ -37,24 +33,16 @@ public class DealController implements Serializable {
     private sessions.DealFacade ejbFacade;
     private List<Deal> items = null;
     private Deal selected;
-    
     private Car selectedCar;
     
-    private List<Long> freeItems = null;
     private List<Car> freeCars = null;
     private List<String> dates = null;
-    
-    private String[] selectedPrice;
     
     private Date startDate;
     private Date endDate;
     
     
     public DealController() {
-    }
-
-    public String[] getSelectedPrice() {
-        return selectedPrice;
     }
 
     public List<String> getDates() {
@@ -69,14 +57,13 @@ public class DealController implements Serializable {
         this.selected = selected;
     }
 
-    public Car getSelectedCar() {
-        return selectedCar;
-    }
-
     public void setSelectedCar(Car selectedCar) {
         this.selectedCar = selectedCar;
     }
     
+    public Car getSelectedCar() {
+        return selectedCar;
+    }
     
     public Date getStartDate() {
         return startDate;
@@ -92,14 +79,6 @@ public class DealController implements Serializable {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public List<Long> getFreeItems() {
-        return freeItems;
-    }
-
-    public void setFreeItems(List<Long> freeItems) {
-        this.freeItems = freeItems;
     }
 
     public DealFacade getEjbFacade() {
@@ -128,11 +107,9 @@ public class DealController implements Serializable {
         return ejbFacade;
     }
 
-        
-    
     public void freeCarList() throws IOException{
         
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         String sDate = formatter.format(startDate);
         String eDate = formatter.format(endDate);
         
@@ -156,8 +133,32 @@ public class DealController implements Serializable {
        }
        
        
+       for(Car c : freeCars){
+            for(int i = 0; i< c.getSeasonInterval().size(); i++){
+               if(c.getSeasonInterval().get(i)[0].before(startDate)&& c.getSeasonInterval().get(i)[1].after(endDate)){
+                    c.setActualPriceList(c.getSeasonPrice().get(i));
+                }
+            }
+        }
         
+        for(Car c : freeCars){
+            for(int i = 0; i< c.getPriceInterval().size(); i++){
+               if(days >= c.getPriceInterval().get(i)[0] && days <= c.getPriceInterval().get(i)[1]){
+                    c.setActualPriceInterval(c.getPriceInterval().get(i));
+                    c.setActualPrice(c.getActualPriceList()[i]);
+                }
+            }
+        }
+       
+       
+       
         FacesContext.getCurrentInstance().getExternalContext().redirect("FreeCars.xhtml"); 
+    }
+    
+    public Deal prepareCreate() {
+        selected = new Deal();
+        initializeEmbeddableKey();
+        return selected;
     }
     
     public Car prepareSelectedCar(){
@@ -166,10 +167,8 @@ public class DealController implements Serializable {
         return selectedCar;
     }
     
-    public Deal prepareCreate() {
-        selected = new Deal();
-        initializeEmbeddableKey();
-        return selected;
+    public void closeDialog(){
+        RequestContext.getCurrentInstance().execute("PF('CarViewDialog').hide();PF('DealViewDialog').show()");
     }
 
     public void create() {

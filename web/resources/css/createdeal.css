@@ -1,0 +1,56 @@
+.ui-selectonemenu {
+    border-radius: 0;
+}
+
+.ui-selectonemenu .ui-state-default{
+    border-color: black !important;
+    box-shadow: none !important;
+}
+
+.ui-selectonemenu:hover {
+    box-shadow: none !important;
+}
+
+.ui-selectonemenu input {
+    box-shadow: none !important;
+    border-color: black !important;
+}
+
+.ui-selectonemenu-label {
+    border-radius: 0! important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.ui-selectonemenu-trigger {
+    background: orange !important;
+    border-color: black !important;
+}
+
+.ui-selectonemenu-panel {
+    border-radius: 0;
+    box-shadow: none !important;
+    border-color: black !important;
+}
+
+.ui-selectonemenu-item {
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: none;
+    color: black;
+    background: transparent !important;
+}
+
+.ui-selectonemenu-item:hover {
+    background: #abb49b !important;
+    border-radius: 0;
+    box-shadow: none;
+    color: black;
+}
+
+.ui-selectonemenu-item.ui-state-highlight {
+    color: black !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+

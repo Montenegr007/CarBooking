@@ -70,7 +70,7 @@ public class Car implements Serializable {
     private Boolean unlimitKmFree;
     
     @Column(name = "limit_km")
-    private String limitKmDay;
+    private Integer limitKmDay;
     
     @Column(name = "limit_overage")
     private Integer limitOverage;
@@ -270,11 +270,17 @@ public class Car implements Serializable {
     @Column(name = "wifi_price")
     private Integer wifiPrice;
     
+    @Column(name = "actual_price_list")
+    private Integer[] actualPriceList;
+    
     @Column(name = "actual_price")
-    private Integer[] actualPrice;
+    private Integer actualPrice;
+    
+    @Column(name = "actual_price_interval")
+    private Integer[] actualPriceInterval;
     
     @Column(name = "price_interval")
-    private Integer[] priceInterval;
+    private List<Integer[]> priceInterval;
     
     @Column(name = "season_price")
     private List<Integer[]> seasonPrice;
@@ -292,7 +298,7 @@ public class Car implements Serializable {
         this.carId = carId;
     }
 
-    public Car(Integer carId, String brand, String carClass, String model, String plateNo, int productionYear, String color, String bodyType, Boolean unlimitKmFree, String limitKmDay, Integer limitOverage, Integer unlimitPrice, Boolean includedTpl, Boolean includedScdw, Integer scdwPrice, Boolean includedCdw, Integer cdwPrice, Boolean includedPai, Integer paiPrice, Integer franchiseAmount, Integer noFranchisePrice, Boolean includedTheft, Integer theftPrice, Integer depositAmount, Integer noDepositPrice, Boolean includedGreenCard, Integer greenCardPrice, String engineType, String transmission, String capacity, String drive, String fuel, String tank, String fuelConsumption, Boolean absystem, Boolean ebd, Boolean esp, String numOfSeats, String numOfDoors, String airCondition, String interior, String poweredWindows, String numOfAirbags, String sideWheel, String cruiseControle, String reverseCamera, String parktronik, String radio, String video, String audioCd, String usb, String mp3, String aux, Boolean includedGps, Integer gpsPrice, Integer childBoosterPrice, Integer childSeatPrice, Integer childSeatUp1Price, Integer secondDriverPrice, Integer wifiPrice, Integer[] actualPrice, Integer[] priceInterval, List<Integer[]> seasonPrice, List<Date[]> seasonInterval, List<Deal> dealList) {
+    public Car(Integer carId, String brand, String carClass, String model, String plateNo, int productionYear, String color, String bodyType, Boolean unlimitKmFree, Integer limitKmDay, Integer limitOverage, Integer unlimitPrice, Boolean includedTpl, Boolean includedScdw, Integer scdwPrice, Boolean includedCdw, Integer cdwPrice, Boolean includedPai, Integer paiPrice, Integer franchiseAmount, Integer noFranchisePrice, Boolean includedTheft, Integer theftPrice, Integer depositAmount, Integer noDepositPrice, Boolean includedGreenCard, Integer greenCardPrice, String engineType, String transmission, String capacity, String drive, String fuel, String tank, String fuelConsumption, Boolean absystem, Boolean ebd, Boolean esp, String numOfSeats, String numOfDoors, String airCondition, String interior, String poweredWindows, String numOfAirbags, String sideWheel, String cruiseControle, String reverseCamera, String parktronik, String radio, String video, String audioCd, String usb, String mp3, String aux, Boolean includedGps, Integer gpsPrice, Integer childBoosterPrice, Integer childSeatPrice, Integer childSeatUp1Price, Integer secondDriverPrice, Integer wifiPrice, Integer[] actualPriceList, Integer actualPrice, Integer[] actualPriceInterval, List<Integer[]> priceInterval, List<Integer[]> seasonPrice, List<Date[]> seasonInterval, List<Deal> dealList) {
         this.carId = carId;
         this.brand = brand;
         this.carClass = carClass;
@@ -353,14 +359,14 @@ public class Car implements Serializable {
         this.childSeatUp1Price = childSeatUp1Price;
         this.secondDriverPrice = secondDriverPrice;
         this.wifiPrice = wifiPrice;
+        this.actualPriceList = actualPriceList;
         this.actualPrice = actualPrice;
+        this.actualPriceInterval = actualPriceInterval;
         this.priceInterval = priceInterval;
         this.seasonPrice = seasonPrice;
         this.seasonInterval = seasonInterval;
         this.dealList = dealList;
     }
-
-    
 
     public Integer getCarId() {
         return carId;
@@ -370,20 +376,20 @@ public class Car implements Serializable {
         this.carId = carId;
     }
 
-    public String getCarClass() {
-        return carClass;
-    }
-
-    public void setCarClass(String carClass) {
-        this.carClass = carClass;
-    }
-    
     public String getBrand() {
         return brand;
     }
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getCarClass() {
+        return carClass;
+    }
+
+    public void setCarClass(String carClass) {
+        this.carClass = carClass;
     }
 
     public String getModel() {
@@ -426,14 +432,6 @@ public class Car implements Serializable {
         this.bodyType = bodyType;
     }
 
-    public Integer[] getActualPrice() {
-        return actualPrice;
-    }
-
-    public void setActualPrice(Integer[] actualPrice) {
-        this.actualPrice = actualPrice;
-    }
-    
     public Boolean getUnlimitKmFree() {
         return unlimitKmFree;
     }
@@ -442,11 +440,11 @@ public class Car implements Serializable {
         this.unlimitKmFree = unlimitKmFree;
     }
 
-    public String getLimitKmDay() {
+    public Integer getLimitKmDay() {
         return limitKmDay;
     }
 
-    public void setLimitKmDay(String limitKmDay) {
+    public void setLimitKmDay(Integer limitKmDay) {
         this.limitKmDay = limitKmDay;
     }
 
@@ -850,19 +848,35 @@ public class Car implements Serializable {
         this.wifiPrice = wifiPrice;
     }
 
-    public List<Deal> getDealList() {
-        return dealList;
+    public Integer[] getActualPriceList() {
+        return actualPriceList;
     }
 
-    public void setDealList(List<Deal> dealList) {
-        this.dealList = dealList;
+    public void setActualPriceList(Integer[] actualPriceList) {
+        this.actualPriceList = actualPriceList;
     }
 
-    public Integer[] getPriceInterval() {
+    public Integer getActualPrice() {
+        return actualPrice;
+    }
+
+    public void setActualPrice(Integer actualPrice) {
+        this.actualPrice = actualPrice;
+    }
+
+    public Integer[] getActualPriceInterval() {
+        return actualPriceInterval;
+    }
+
+    public void setActualPriceInterval(Integer[] actualPriceInterval) {
+        this.actualPriceInterval = actualPriceInterval;
+    }
+
+    public List<Integer[]> getPriceInterval() {
         return priceInterval;
     }
 
-    public void setPriceInterval(Integer[] priceInterval) {
+    public void setPriceInterval(List<Integer[]> priceInterval) {
         this.priceInterval = priceInterval;
     }
 
@@ -881,6 +895,16 @@ public class Car implements Serializable {
     public void setSeasonInterval(List<Date[]> seasonInterval) {
         this.seasonInterval = seasonInterval;
     }
+
+    public List<Deal> getDealList() {
+        return dealList;
+    }
+
+    public void setDealList(List<Deal> dealList) {
+        this.dealList = dealList;
+    }
+
+    
     
     
     

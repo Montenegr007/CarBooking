@@ -46,48 +46,23 @@ public class DealFacade extends AbstractFacade<Deal> {
         
         System.out.println(date1);
         System.out.println(date2);
-        
-               
-       
-    //    Query query;
-    //            query = em.createNativeQuery(
-    //            "SELECT DISTINCT c_id FROM deal WHERE NOT c_id = ANY (SELECT c_id FROM deal WHERE (start_date, end_date) OVERLAPS (DATE '" + sDate + "', DATE '" + eDate + "')) AND deal_exist;");
-           
+              
         Query query = em.createNativeQuery("SELECT car_id FROM car WHERE NOT car_id = ANY (SELECT DISTINCT c_id FROM deal WHERE (start_date, end_date) OVERLAPS (DATE '" + sDate + "', DATE '" + eDate + "') AND deal_exist);");
-    
-        List<Long> list = query.getResultList();
+        List<Integer> list = query.getResultList();
         
-        for(Long l : list) {
-            TypedQuery<Car> query1 = em.createQuery("SELECT c FROM Car c WHERE c.carId = :carId", Car.class);
-            query1.setParameter("carId", l);
+        for(Integer l : list) {
+           TypedQuery<Car> query1 = em.createQuery("SELECT c FROM Car c WHERE c.carId = :carId", Car.class);
+           query1.setParameter("carId", l);
       
-            
-            try{
+           try{
                 Car c = query1.getSingleResult();
                 freeCars.add(c);
-          
-                
-                                              
+                                                    
             } catch(Exception e){
                 System.out.println("Car with ID = " + l + " не добавилась в коллекцию!");
             }
         }
-        
-           
-       
-        for(Car c : freeCars){
-            for(int i = 0; i< c.getSeasonInterval().size(); i++){
-               if(c.getSeasonInterval().get(i)[0].before(date1)&& c.getSeasonInterval().get(i)[1].after(date2)){
-                    c.setActualPrice(c.getSeasonPrice().get(i));
-                   
-                    
-                }
-            }
-        }
-        
-       
-    
-        
+               
         return freeCars;
        
     }

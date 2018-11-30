@@ -1,14 +1,40 @@
+/*-----------------Price panel--------------------*/
+
 .firstpanel {
     border-color: black;
-    text-align: center !important;
-    color: black !important;
+    background: black;
+    text-align: center !important; 
+   
 }
+
+.firstpanel .ui-panel-content {
+    color: white;
+ }
+ 
+ .ui-separator {
+     width: 100%;
+     border-color: black !important;
+     opacity: 0.8 !important;
+ }
 
 .secondpanel {
     border-color: black;
     text-align: center !important;
-    color: black !important;
+   
     
+}
+
+.secondpanel .ui-panel-content {
+    color: black !important;
+}
+
+.thirdpanel {
+    border-color: black;
+    width: 100%;
+}
+
+.thirdpanel .ui-panel-content {
+    color: black !important;
 }
 
 .ui-panel-titlebar {
@@ -23,8 +49,8 @@
 }
 
 .largetext {
-    font-size: 20px;
-    padding-left: 7px;
+    font-size: 25px;
+    padding-left: 5px;
 }
 
 .smalltext {
@@ -39,12 +65,13 @@
 }
 
 .firstcolumn {
-    width: 40% !important;
+    width: 35% !important;
 }
 
 .secondcolumn {
-    width: 10% !important;
-    text-align: center !important;
+    width: 15% !important;
+    text-align: right;
+    padding-right: 20px !important;
 }
 
 .thirdcolumn {
@@ -125,30 +152,20 @@
     border: none !important;
 }
 
-.calendar {
+.ui-calendar {
     border: none !important;
 }
 
-.calendar input {
+.ui-calendar input {
     background: transparent !important;
     border: none !important;
     height: 20px !important;
-    width: 35px !important;
+    width: 75px !important;
     font-weight: bold !important;
 }
 
-.calendar .ui-state-disabled {
+.ui-calendar .ui-state-disabled {
     opacity: 1;
+}
     
-}
-
-.mypanel{
-   border-color: black;
-}
-
-
-
-
-
-
 

@@ -31,19 +31,26 @@ public class CarController implements Serializable {
     
     private Car selected;
     
-    private final Integer[] priceIntervals = new Integer[14];
+    private final Integer[] priceInterval1 = new Integer[2];
+    private final Integer[] priceInterval2 = new Integer[2];
+    private final Integer[] priceInterval3 = new Integer[2];
+    private final Integer[] priceInterval4 = new Integer[2];
+    private final Integer[] priceInterval5 = new Integer[2];
+    private final Integer[] priceInterval6 = new Integer[2];
+    private final Integer[] priceInterval7 = new Integer[2];
+    private List<Integer[]> priceIntervals = null;
     
     private final Integer[] highPrice = new Integer[7];
     private final Integer[] medium1Price = new Integer[7];
     private final Integer[] medium2Price = new Integer[7];
     private final Integer[] lowPrice = new Integer[7];
-    List<Integer[]> prices = null;
+    private List<Integer[]> prices = null;
     
     private final Date[] highSeason = new Date[2];
     private final Date[] lowSeason = new Date[2];
     private final Date[] medium1Season = new Date[2];
     private final Date[] medium2Season = new Date[2];
-    List<Date[]> seasons = null;
+    private List<Date[]> seasons = null;
     
     
     
@@ -73,10 +80,38 @@ public class CarController implements Serializable {
         return ejbFacade;
     }
 
-    public Integer[] getPriceIntervals() {
+    public List<Integer[]> getPriceIntervals() {
         return priceIntervals;
     }
 
+    public Integer[] getPriceInterval1() {
+        return priceInterval1;
+    }
+
+    public Integer[] getPriceInterval2() {
+        return priceInterval2;
+    }
+
+    public Integer[] getPriceInterval3() {
+        return priceInterval3;
+    }
+
+    public Integer[] getPriceInterval4() {
+        return priceInterval4;
+    }
+
+    public Integer[] getPriceInterval5() {
+        return priceInterval5;
+    }
+
+    public Integer[] getPriceInterval6() {
+        return priceInterval6;
+    }
+
+    public Integer[] getPriceInterval7() {
+        return priceInterval7;
+    }
+        
     public Integer[] getHighPrice() {
         return highPrice;
     }
@@ -119,7 +154,17 @@ public class CarController implements Serializable {
     
     
      public Car prepareCreate() {    
-                
+         
+        priceIntervals = new ArrayList();
+        priceIntervals.add(priceInterval1);
+        priceIntervals.add(priceInterval2);
+        priceIntervals.add(priceInterval3);
+        priceIntervals.add(priceInterval4);
+        priceIntervals.add(priceInterval5);
+        priceIntervals.add(priceInterval6);
+        priceIntervals.add(priceInterval7);
+        
+        
         prices = new ArrayList();
         prices.add(highPrice);
         prices.add(medium1Price);

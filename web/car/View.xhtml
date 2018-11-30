@@ -9,130 +9,148 @@
     <ui:composition>
         
         <h:outputStylesheet name="css/viewcar.css"/>
-        <h:outputScript name="js/viewcar.js"/>
-        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" width="1000" resizable="false" appendTo="@(body)" header="CAR DETAILS" onShow="showPrice()">
-            
+        <h:outputScript library="js" name="viewcar.js"/>          
+        
+        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" width="900" resizable="false" appendTo="@(body)" header="CAR DETAIL">
+                        
             <h:form id="CarViewForm">
           
                 <h:panelGroup id="display">
                     
-              
-                    <p:panelGrid style="width: 100%" styleClass="noneBorderGrid">
-                       <p:row>
+                    <p:panelGrid styleClass="noneBorderGrid">
+                        <p:row>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel1" styleClass="mypanel">
-                                <h:outputText id="ot1" value="#{carController.selected.priceInterval[0]}" rendered="#{carController.selected.priceInterval[0] != 0}"/>
-                                <h:outputText value=" - " rendered="#{carController.selected.priceInterval[0] != 0}"/>
-                                <h:outputText id="ot2" value="#{carController.selected.priceInterval[1]}"/>
-                                <h:outputText value=" day" rendered="#{carController.selected.priceInterval[0] == 0}"/>
-                                <h:outputText value=" days" rendered="#{carController.selected.priceInterval[0] != 0}"/>
+                                <p:panel id="dayPanel1" styleClass="firstpanel">
+                                    <h:outputText id="ot1" value="#{carController.selected.priceInterval.get(0)[0]}" rendered="#{carController.selected.priceInterval.get(0)[0] !=0}"/>
+                                    <h:outputText value=" - " rendered="#{carController.selected.priceInterval.get(0)[0] !=0}"/>
+                                    <h:outputText id="ot2" value="#{carController.selected.priceInterval.get(0)[1]}"/>
+                                    <h:outputText value=" day" rendered="#{carController.selected.priceInterval.get(0)[0] ==0}"/>
+                                    <h:outputText value=" days" rendered="#{carController.selected.priceInterval.get(0)[0] !=0}"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel2" styleClass="mypanel">
-                                <h:outputText id="ot3" value="#{carController.selected.priceInterval[2]}"/>
-                                <h:outputText value=" - "/>
-                                <h:outputText id="ot4" value="#{carController.selected.priceInterval[3]} days"/>
-                                 </p:panel>
+                                <p:panel id="dayPanel2" styleClass="firstpanel">
+                                    <h:outputText id="ot3" value="#{carController.selected.priceInterval.get(1)[0]}"/>
+                                    <h:outputText value=" - "/>
+                                    <h:outputText id="ot4" value="#{carController.selected.priceInterval.get(1)[1]}"/>
+                                    <h:outputText value=" days "/>
+                                </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel3" styleClass="mypanel">
-                                <h:outputText id="ot5" value="#{carController.selected.priceInterval[4]}"/>
-                                <h:outputText value=" - "/>
-                                <h:outputText id="ot6" value="#{carController.selected.priceInterval[5]} days"/>
-                                 </p:panel>
+                                <p:panel id="dayPanel3" styleClass="firstpanel">
+                                    <h:outputText id="ot5" value="#{carController.selected.priceInterval.get(2)[0]}"/>
+                                    <h:outputText value=" - "/>
+                                    <h:outputText id="ot6" value="#{carController.selected.priceInterval.get(2)[1]}"/>
+                                    <h:outputText value=" days "/>
+                                </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel4" styleClass="mypanel">
-                                <h:outputText id="ot7" value="#{carController.selected.priceInterval[6]}"/>
-                                <h:outputText value=" - "/>
-                                <h:outputText id="ot8" value="#{carController.selected.priceInterval[7]} days"/>
-                                 </p:panel>
+                                <p:panel id="dayPanel4" styleClass="firstpanel">
+                                    <h:outputText id="ot7" value="#{carController.selected.priceInterval.get(3)[0]}"/>
+                                    <h:outputText value=" - "/>
+                                    <h:outputText id="ot8" value="#{carController.selected.priceInterval.get(3)[1]}"/>
+                                    <h:outputText value=" days "/>
+                                </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel5" styleClass="mypanel">
-                                <h:outputText id="ot9" value="#{carController.selected.priceInterval[8]}"/>
-                                <h:outputText value=" - "/>
-                                <h:outputText id="ot10" value="#{carController.selected.priceInterval[9]} days"/>
-                                 </p:panel>
+                                <p:panel id="dayPanel5" styleClass="firstpanel">
+                                    <h:outputText id="ot9" value="#{carController.selected.priceInterval.get(4)[0]}"/>
+                                    <h:outputText value=" - "/>
+                                    <h:outputText id="ot10" value="#{carController.selected.priceInterval.get(4)[1]}"/>
+                                    <h:outputText value=" days "/>
+                                </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel6" styleClass="mypanel">
-                                <h:outputText id="ot11" value="#{carController.selected.priceInterval[10]}"/>
-                                <h:outputText value=" - "/>
-                                <h:outputText id="ot12" value="#{carController.selected.priceInterval[11]} days"/>
-                                 </p:panel>
+                                <p:panel id="dayPanel6" styleClass="firstpanel">
+                                    <h:outputText id="ot11" value="#{carController.selected.priceInterval.get(5)[0]}"/>
+                                    <h:outputText value=" - "/>
+                                    <h:outputText id="ot12" value="#{carController.selected.priceInterval.get(5)[1]}"/>
+                                    <h:outputText value=" days "/>
+                                </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="dayPanel7" styleClass="mypanel">
-                                <h:outputText id="ot13" value="#{carController.selected.priceInterval[12]}"/>
-                                <h:outputText value=" - "/>
-                                <h:outputText id="ot14" value="#{carController.selected.priceInterval[13]} days"/>
-                                 </p:panel>
+                                <p:panel id="dayPanel7" styleClass="firstpanel">
+                                    <h:outputText id="ot13" value="#{carController.selected.priceInterval.get(6)[0]}"/>
+                                    <h:outputText value=" - "/>
+                                    <h:outputText id="ot14" value="#{carController.selected.priceInterval.get(6)[1]}"/>
+                                    <h:outputText value=" days "/>
+                                </p:panel>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel1" styleClass="mypanel">
-                                <h:outputText id="price1" value="#{carController.selected.actualPrice[0]} &euro;/day"/>
+                                <p:panel id="pricePanel1" styleClass="secondpanel">
+                                    <h:outputText id="price1" value="#{carController.selected.actualPriceList[0]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel2" styleClass="mypanel">
-                                <h:outputText id="price2" value="#{carController.selected.actualPrice[1]} &euro;/day"/>
+                                <p:panel id="pricePanel2" styleClass="secondpanel">
+                                    <h:outputText id="price2" value="#{carController.selected.actualPriceList[1]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel3" styleClass="mypanel">
-                                <h:outputText id="price3" value="#{carController.selected.actualPrice[2]} &euro;/day"/>
+                                <p:panel id="pricePanel3" styleClass="secondpanel">
+                                    <h:outputText id="price3" value="#{carController.selected.actualPriceList[2]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel4" styleClass="mypanel">
-                                    <h:outputText id="price4" value="#{carController.selected.actualPrice[3]} &euro;/day"/>
+                                <p:panel id="pricePanel4" styleClass="secondpanel">
+                                    <h:outputText id="price4" value="#{carController.selected.actualPriceList[3]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel5" styleClass="mypanel">
-                                <h:outputText id="price5" value="#{carController.selected.actualPrice[4]} &euro;/day"/>
+                                <p:panel id="pricePanel5" styleClass="secondpanel">
+                                    <h:outputText id="price5" value="#{carController.selected.actualPriceList[4]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel6" styleClass="mypanel">
-                                <h:outputText id="price6" value="#{carController.selected.actualPrice[5]} &euro;/day"/>
+                                <p:panel id="pricePanel6" styleClass="secondpanel">
+                                    <h:outputText id="price6" value="#{carController.selected.actualPriceList[5]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                             <p:column styleClass="sixthcolumn">
-                                <p:panel id="pricePanel7" styleClass="mypanel">
-                                <h:outputText id="price7"  value="#{carController.selected.actualPrice[6]} &euro;/day"/>
+                                <p:panel id="pricePanel7" styleClass="secondpanel">
+                                    <h:outputText id="price7"  value="#{carController.selected.actualPriceList[6]}"/>
+                                    <h:outputText value=" &euro;/day"/>
                                 </p:panel>
                             </p:column>
                         </p:row>
                     </p:panelGrid>  
-                    
-                     <p:panelGrid style="width: 400px; height: 80px; margin-top: 10px;" rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
-                       
-                        <p:row >
-                            <p:column colspan="3">
-                                <h:outputText value="#{carController.selected.brand} #{carController.selected.model}" styleClass="largetext"/>
-                            </p:column>
-                            <p:column>
-                                <h:outputText value="From #{dealController.dates.get(0)} to #{dealController.dates.get(1)}"/>
-                            </p:column>
-                             <p:column>
-                                <h:outputText id="numOfDays" value="#{dealController.dates.get(2)}"/>
-                                <h:outputText value="days"/>
-                            </p:column>
-                            
-                            
-                        </p:row>
-                    </p:panelGrid>
-                 
+
+                    <p:separator/>
+
                     <br/>
-                    
-                    <p:panelGrid style="width: 100%" rendered="#{carController.selected != null}" styleClass="orangeBorderGrid">
-                        
-                                  
+
+                    <p:panelGrid rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
+                        <p:row style="height: 80px">
+                            <p:column style="background: orange;">
+                                    <h:outputText value="#{carController.selected.brand} #{carController.selected.model}" styleClass="largetext"/>
+                                    <h:outputText value="From #{dealController.dates.get(0)} to #{dealController.dates.get(1)}" style="font-size: 14px; padding-left: 10px;"/>
+                                    <h:outputText id="numOfDays" value="#{dealController.dates.get(2)}" styleClass="largetext" style="padding-left: 20px;"/>
+                                    <h:outputText value=" days" rendered="#{dealController.dates.get(2) != 1}" style="font-size: 14px;"/>
+                                    <h:outputText value=" day" rendered="#{dealController.dates.get(2) == 1}" style="font-size: 14px;"/>
+                            </p:column>
+                            <p:column style="text-align: center; width: 14.28%; background: orange;">
+                                    <h:outputText value="#{carController.selected.actualPrice}" styleClass="largetext" style="padding-right: 3px;"/>
+                                    <h:outputText value=" &euro;/day" style="font-size: 14px; margin-right: 10px;"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid> 
+
+                    <br/>
+
+                    <p:panelGrid id="commonPanel" rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
+                        <p:row>
+                            <p:column colspan="2">
+                                <p:separator style="width: 100%; border-color: black; opacity: 0.8"/>
+                            </p:column>  
+                        </p:row>
                         <p:row>
                             <p:column>
                                 <h:outputText value="Year of manufacture"/>
@@ -140,7 +158,7 @@
                             <p:column styleClass="right">
                                 <h:outputText value="#{carController.selected.productionYear}"/>
                             </p:column>
-                           <p:column rowspan="13" styleClass="fifthcolumn">
+                            <p:column rowspan="13" styleClass="fifthcolumn">
                                 <p:graphicImage name="img/cars/kia_ceed_black.jpeg" height="225px" width="300px"/>
                             </p:column>
                         </p:row>
@@ -149,7 +167,7 @@
                                 <h:outputText value="Engine"/>
                             </p:column>
                             <p:column styleClass="right">
-                                <h:outputText value="#{carController.selected.engineType}"/>
+                                <h:outputText value="#{carController.selected.engineType}l"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -162,12 +180,9 @@
                         </p:row>
                         <p:row>
                             <p:column colspan="2">
-                                <p:separator/>
+                                <p:separator style="width: 100%; border-color: black; opacity: 0.8"/>
                             </p:column>
                         </p:row>
-                                               
-                        
-                        
                         <p:row>
                             <p:column rendered="#{carController.selected.includedTpl != false}" >
                                 <h:outputText value="TPL - Third Party Liability Insurance"/>
@@ -176,654 +191,545 @@
                                 <p:selectBooleanCheckbox value="#{carController.selected.includedTpl}" rendered="#{carController.selected.includedTpl != false}" disabled="true" styleClass="blackBox"/>
                             </p:column>
                         </p:row>
-                        
-                        
-                                          
                         <p:row>
-                             <p:column rendered="#{carController.selected.includedCdw != false}">
-                                   <h:outputText id="cdw" value="CDW - Collision Damage Waiver"/>
-                                    <p:tooltip id="toolTipFade" for="cdw" value="There are 4 options for position" position="bottom"/>
+                            <p:column rendered="#{carController.selected.includedCdw != false}">
+                                <h:outputText id="cdw" value="CDW - Collision Damage Waiver"/>
+                                <p:tooltip id="toolTipFade" for="cdw" value="There are 4 options for position" position="bottom"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedCdw != false}" styleClass="right">
-                                  <p:selectBooleanCheckbox value="#{carController.selected.includedCdw}" rendered="#{carController.selected.includedCdw != false}" disabled="true" styleClass="blackBox"/>
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
-                                      
+                            <p:column rendered="#{carController.selected.includedCdw != false}" styleClass="right">
+                                <p:selectBooleanCheckbox value="#{carController.selected.includedCdw}" rendered="#{carController.selected.includedCdw != false}" disabled="true" styleClass="blackBox"/>
+                            </p:column>
+                        </p:row>
                         <p:row>
-                             <p:column rendered="#{carController.selected.includedCdw != true}">
-                                 <p:selectBooleanCheckbox rendered="#{carController.selected.includedCdw != true}" styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText rendered="#{carController.selected.includedCdw != true}" value="CDW - Collision Damage Waiver"/>
+                            <p:column rendered="#{carController.selected.includedCdw != true}">
+                                <p:selectBooleanCheckbox id="cdwSelector" rendered="#{carController.selected.includedCdw != true}" styleClass="blackBox" onchange="calculate(#{carController.selected.cdwPrice}, 'cdwSelector')"/>
+                                &nbsp;
+                                <h:outputText rendered="#{carController.selected.includedCdw != true}" value="CDW - Collision Damage Waiver"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedCdw != true}" styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.cdwPrice}" rendered="#{carController.selected.includedCdw != true}"/>
-                                
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
+                            <p:column rendered="#{carController.selected.includedCdw != true}" styleClass="right">
+                                <p:outputLabel value="#{carController.selected.cdwPrice}" rendered="#{carController.selected.includedCdw != true}"/>
+                                <h:outputText value="&euro;/day"/>
+                            </p:column>
+                        </p:row>
                         <p:row>
-                             <p:column rendered="#{carController.selected.includedScdw != false}">
-                                
-                                 <h:outputText rendered="#{carController.selected.includedScdw != false}" value="SCDW - Super CDW"/>
-                                
+                            <p:column rendered="#{carController.selected.includedScdw != false}">
+                                <h:outputText rendered="#{carController.selected.includedScdw != false}" value="SCDW - Super CDW"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedScdw != false}" styleClass="right">
-                                  <p:selectBooleanCheckbox rendered="#{carController.selected.includedScdw != false}" value="#{carController.selected.includedScdw}" disabled="true" styleClass="blackBox"/>
-                              </p:column>
-                       </p:row>
-                        
-                                                
+                            <p:column rendered="#{carController.selected.includedScdw != false}" styleClass="right">
+                                <p:selectBooleanCheckbox rendered="#{carController.selected.includedScdw != false}" value="#{carController.selected.includedScdw}" disabled="true" styleClass="blackBox"/>
+                            </p:column>
+                        </p:row>
                         <p:row>
-                             <p:column rendered="#{carController.selected.includedScdw != true}">
-                                 <p:selectBooleanCheckbox rendered="#{carController.selected.includedScdw != true}" styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText rendered="#{carController.selected.includedScdw != true}" value="SCDW - Super CDW"/>
-                                                
+                            <p:column rendered="#{carController.selected.includedScdw != true}">
+                                <p:selectBooleanCheckbox id="scdwSelector" rendered="#{carController.selected.includedScdw != true}" styleClass="blackBox" onchange="calculate(#{carController.selected.cdwPrice}, 'scdwSelector')"/>
+                                &nbsp;
+                                <h:outputText rendered="#{carController.selected.includedScdw != true}" value="SCDW - Super CDW"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedScdw != true}" styleClass="right">
-                                  
-                                  <p:outputLabel rendered="#{carController.selected.includedScdw != true}" value="#{carController.selected.scdwPrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                        
-                                                   
-                         <p:row>
-                             <p:column rendered="#{carController.selected.includedPai != false}">
-                                
-                                 <h:outputText value="PAI - Personal Accident Insurance"/>
-                                
+                            <p:column rendered="#{carController.selected.includedScdw != true}" styleClass="right">
+                                <p:outputLabel rendered="#{carController.selected.includedScdw != true}" value="#{carController.selected.scdwPrice}"/>
+                                <h:outputText value="&euro;/day"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedPai != false}" styleClass="right">
-                                  <p:selectBooleanCheckbox value="#{carController.selected.includedPai}" disabled="true" styleClass="blackBox"/>
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
-                                                
-                     <p:row>
-                             <p:column rendered="#{carController.selected.includedPai != true}">
-                                 <p:selectBooleanCheckbox styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText value="PAI - Personal Accident Insurance"/>
-                            </p:column>
-                              <p:column rendered="#{carController.selected.includedPai != true}" styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.paiPrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                        
-                        
+                        </p:row>
                         <p:row>
-                             <p:column rendered="#{carController.selected.includedTheft != false}">
-                                
-                                 <h:outputText value="TI - Theft Insurance"/>
-                                
+                            <p:column rendered="#{carController.selected.includedPai != false}">
+                                <h:outputText value="PAI - Personal Accident Insurance"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedTheft != false}" styleClass="right">
-                                  <p:selectBooleanCheckbox value="#{carController.selected.includedTheft}" disabled="true" styleClass="blackBox"/>
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
-                                                
-                     <p:row>
-                             <p:column rendered="#{carController.selected.includedTheft != true}" >
-                                 <p:selectBooleanCheckbox styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText value="TI - Theft Insurance"/>
+                            <p:column rendered="#{carController.selected.includedPai != false}" styleClass="right">
+                                <p:selectBooleanCheckbox value="#{carController.selected.includedPai}" disabled="true" styleClass="blackBox"/>
                             </p:column>
-                              <p:column rendered="#{carController.selected.includedTheft != true}" styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.theftPrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                            
-                        <p:row rendered="#{carController.selected.includedGreenCard != false}">
-                             <p:column>
-                                
-                                 <h:outputText value="Green Card"/>
-                                
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.includedPai != true}">
+                                <p:selectBooleanCheckbox id="paiSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.paiPrice}, 'paiSelector')"/>
+                                &nbsp;
+                                <h:outputText value="PAI - Personal Accident Insurance"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  <p:selectBooleanCheckbox value="#{carController.selected.includedGreenCard}" disabled="true" styleClass="blackBox"/>
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
-                                                
-                     <p:row rendered="#{carController.selected.includedGreenCard != true}">
-                             <p:column >
-                                 <p:selectBooleanCheckbox styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText value="Green Card"/>
+                            <p:column rendered="#{carController.selected.includedPai != true}" styleClass="right">
+                                <h:outputText value="#{carController.selected.paiPrice}"/>
+                                <h:outputText value="&euro;/day"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.greenCardPrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                        
-                        <p:row rendered="#{carController.selected.depositAmount != null}">
-                             <p:column>
-                                
-                                 <h:outputText value="Deposit"/>
-                                
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.includedTheft != false}">
+                                <h:outputText value="TI - Theft Insurance"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  <h:outputText value="#{carController.selected.depositAmount}"/>
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
-                                                
-                     <p:row rendered="#{carController.selected.noDepositPrice != null}">
-                             <p:column >
-                                 <p:selectBooleanCheckbox styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText value="No deposit"/>
+                            <p:column rendered="#{carController.selected.includedTheft != false}" styleClass="right">
+                                <p:selectBooleanCheckbox value="#{carController.selected.includedTheft}" disabled="true" styleClass="blackBox"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.noDepositPrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                        
-                        <p:row rendered="#{carController.selected.franchiseAmount != null}">
-                             <p:column>
-                                
-                                 <h:outputText value="Franchise"/>
-                                
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.includedTheft != true}" >
+                                <p:selectBooleanCheckbox id="theftSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.theftPrice}, 'theftSelector')"/>
+                                &nbsp;
+                                <h:outputText value="TI - Theft Insurance"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  <h:outputText value="#{carController.selected.franchiseAmount}"/>
-                              </p:column>
-                             
-                              
-                             
-                         </p:row>
-                        
-                                                
-                        <p:row rendered="#{carController.selected.noFranchisePrice != null}">
-                             <p:column >
-                                 <p:selectBooleanCheckbox styleClass="blackBox"/>
-                                  &nbsp;
-                                 <h:outputText value="No franchise"/>
+                            <p:column rendered="#{carController.selected.includedTheft != true}" styleClass="right">
+                                <h:outputText value="#{carController.selected.theftPrice}"/>
+                                <h:outputText value="&euro;/day"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.noFranchisePrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                           
-                        
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.includedGreenCard != false}">
+                                <h:outputText value="Green Card"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.includedGreenCard != false}">
+                                <p:selectBooleanCheckbox value="#{carController.selected.includedGreenCard}" disabled="true" styleClass="blackBox"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.includedGreenCard != true}">
+                                <p:selectBooleanCheckbox id="greenCardSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.greenCardPrice}, 'greenCardSelector')"/>
+                                &nbsp;
+                                <h:outputText value="Green Card"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.includedGreenCard != true}">
+                                <h:outputText value="#{carController.selected.greenCardPrice}"/>
+                                <h:outputText value="&euro;/day"/>
+                            </p:column>
+                        </p:row>
                         <p:row>
                             <p:column colspan="2">
                                 <p:separator/>
                             </p:column>
                         </p:row>
-                        
-                        <p:row rendered="#{carController.selected.unlimitKmFree != false}">
-                             <p:column>
-                                
-                                 <h:outputText value="Unlimited mileage"/>
-                                
+                        <p:row>
+                            <p:column rendered="#{carController.selected.depositAmount != null}">
+                                <h:outputText value="Deposit"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  <p:selectBooleanCheckbox value="#{carController.selected.unlimitKmFree}" disabled="true" styleClass="blackBox"/>
-                              </p:column>
-                        
-                             
-                         </p:row>
-                        
-                        
-                        
-                        <p:row rendered="#{carController.selected.limitKmDay != null}">
-                             <p:column>
-                                
-                                 <h:outputText value="Limit mileage"/>
-                                
+                            <p:column styleClass="right" rendered="#{carController.selected.depositAmount != null}">
+                                <h:outputText value="#{carController.selected.depositAmount}&euro;"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  <h:outputText value="#{carController.selected.limitKmDay}"/>
-                              </p:column>
-                             
                         </p:row>
-                        
-                                                
+                        <p:row>
+                            <p:column rendered="#{carController.selected.noDepositPrice != null}">
+                                <p:selectBooleanCheckbox id="noDepositSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.noDepositPrice}, 'noDepositSelector')"/>
+                                &nbsp;
+                                <h:outputText value="No deposit"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.noDepositPrice != null}">
+                                <h:outputText value="#{carController.selected.noDepositPrice}"/>
+                                <h:outputText value="&euro;/day"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.franchiseAmount != null}">
+                                <h:outputText value="Franchise"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.franchiseAmount != null}">
+                                <h:outputText value="#{carController.selected.franchiseAmount}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.noFranchisePrice != null}">
+                                <p:selectBooleanCheckbox id="noFranchiseSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.noFranchisePrice}, 'noFranchiseSelector')"/>
+                                &nbsp;
+                                <h:outputText value="No franchise"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.noFranchisePrice != null}">
+                                <h:outputText value="#{carController.selected.noFranchisePrice}"/>
+                                <h:outputText value="&euro;/day"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+                                <p:separator style="width: 100%; border-color: black; opacity: 0.8"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.unlimitKmFree != false}">
+                                <h:outputText value="Unlimited mileage"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.unlimitKmFree != false}">
+                                <p:selectBooleanCheckbox value="#{carController.selected.unlimitKmFree}" disabled="true" styleClass="blackBox"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rendered="#{carController.selected.limitKmDay != null}">
+                                <h:outputText value="Limit mileage"/>
+                            </p:column>
+                            <p:column styleClass="right" rendered="#{carController.selected.limitKmDay != null}">
+                                <h:outputText value="#{carController.selected.limitKmDay}"/>
+                                <h:outputText value="km/day"/>
+                            </p:column>
+                        </p:row>
                         <p:row rendered="#{carController.selected.limitOverage != null}">
-                             <p:column >
+                            <p:column >
                                 <h:outputText value="Limited overage"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.limitOverage}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                        
+                            <p:column styleClass="right">
+                                <h:outputText value="#{carController.selected.limitOverage}"/>
+                                <h:outputText value="&euro;/km"/>
+                            </p:column>
+                        </p:row>
                         <p:row rendered="#{carController.selected.unlimitPrice != null}">
-                             <p:column >
-                                 <p:selectBooleanCheckbox styleClass="blackBox"/>
-                                 &nbsp;
+                            <p:column >
+                                <p:selectBooleanCheckbox id="unlimitSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.unlimitPrice}, 'unlimitSelector')"/>
+                                &nbsp;
                                 <h:outputText value="No limit mileage"/>
                             </p:column>
-                              <p:column styleClass="right">
-                                  
-                                  <p:outputLabel value="#{carController.selected.unlimitPrice}"/>
-                                
-                              </p:column>
-                                               
-                         </p:row>
-                            
-                       
-                          
-                       
-                        
-               
+                            <p:column styleClass="right">
+                                <h:outputText value="#{carController.selected.unlimitPrice}"/>
+                                <h:outputText value="&euro;/day"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+                                <p:separator style="width: 100%; border-color: black; opacity: 0.8"/>
+                            </p:column>
+                        </p:row>
                     </p:panelGrid>
-                    
-                    <br/>
-                    
+
                     <p:accordionPanel id="carCharacteristic" style="width: 100%;" activeIndex="1">
                         <p:tab title="Car characteristic">
-                             <p:panelGrid style="width: 100%" rendered="#{carController.selected != null}" styleClass="orangeBorderGrid">
-                                         
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Number of seats"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.numOfSeats}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Capacity"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.capacity}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Drive"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                 <h:outputText value="#{carController.selected.drive}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Interior"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.interior}"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Fuel consumption"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.fuelConsumption}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Airbags"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.numOfAirbags}"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Air conditioning"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.airCondition}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="ABS"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <p:selectBooleanCheckbox value="#{carController.selected.absystem}" disabled="true" styleClass="blackBox"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Tank"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.tank}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="EBD"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <p:selectBooleanCheckbox value="#{carController.selected.ebd}" disabled="true" styleClass="blackBox"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Fuel"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.fuel}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="ESP"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <p:selectBooleanCheckbox value="#{carController.selected.esp}" disabled="true" styleClass="blackBox"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Wheel side"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.sideWheel}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Powered windows"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText value="#{carController.selected.poweredWindows}"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <h:outputText value="Body color"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                
-                                <p:button value="" style="width: 40px; height: 20px; border-color: black !important; background: #{carController.selected.color} !important;"/>
-                            </p:column>
-                            <p:column  styleClass="firstcolumn">
-                                <h:outputText value="Parktronik"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn" >
-                                <h:outputText value="#{carController.selected.parktronik}"/>
-                            </p:column>
-                        </p:row>
-                            
-                            <p:row>
-                                <p:column  styleClass="firstcolumn">
-                                <h:outputText value="Cruise controle"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.cruiseControle}"/>
-                            </p:column>
-                                <p:column  styleClass="firstcolumn">
-                                <h:outputText value="Reverse camera"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.reverseCamera}"/>
-                            </p:column>
-                        </p:row>
-                            
-                        <p:row>
-                                <p:column styleClass="firstcolumn">
-                                <h:outputText value="Radio"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.radio}"/>                           
-                                </p:column>
-                                <p:column styleClass="firstcolumn">
-                                <h:outputText value="Audio CD"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.audioCd}"/>
-                            </p:column>
-                        </p:row>
-                            
-                            <p:row>
-                                <p:column  styleClass="firstcolumn">
-                                <h:outputText value="MP3"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.mp3}"/>
-                            </p:column>
-                                <p:column  styleClass="firstcolumn">
-                                <h:outputText value="USB"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.usb}"/>
-                            </p:column>
-                        </p:row>
-                            
-                            <p:row>
-                                <p:column styleClass="firstcolumn">
-                                <h:outputText value="AUX"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.aux}"/>
-                            </p:column>
-                                <p:column styleClass="firstcolumn">
-                                <h:outputText value="Video DVD"/>
-                            </p:column>
-                                <p:column styleClass="secondcolumn" >
-                                    <h:outputText value="#{carController.selected.video}"/>
-                            </p:column>
-                        </p:row>
-                            
-                        </p:panelGrid>
+                            <p:panelGrid rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Number of seats"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.numOfSeats}"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Capacity"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.capacity}"/>
+                                        <h:outputText value="HP"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Drive"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.drive} wheel"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Interior"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.interior}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Fuel consumption"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.fuelConsumption}"/>
+                                        <h:outputText value=" l/100km"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Airbags"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.numOfAirbags}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Air conditioning"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.airCondition}"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="ABS"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.absystem}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:separator/>
+                                    </p:column>
+                                    <p:column colspan="2">
+                                        <p:separator/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Tank"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.tank}"/>
+                                        <h:outputText value="l"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="EBD"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.ebd}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Fuel"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.fuel}"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="ESP"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.esp}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Wheel side"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.sideWheel}"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Powered windows"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText value="#{carController.selected.poweredWindows}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Body color"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <p:button value="" style="width: 40px; height: 15px; border-color: black !important; background: #{carController.selected.color} !important;"/>
+                                    </p:column>
+                                    <p:column  styleClass="firstcolumn">
+                                        <h:outputText value="Parktronik"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.parktronik}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:separator/>
+                                    </p:column>
+                                    <p:column colspan="2">
+                                        <p:separator/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column  styleClass="firstcolumn">
+                                        <h:outputText value="Cruise controle"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.cruiseControle}"/>
+                                    </p:column>
+                                    <p:column  styleClass="firstcolumn">
+                                        <h:outputText value="Reverse camera"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.reverseCamera}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Radio"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.radio}"/>                           
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Audio CD"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.audioCd}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column  styleClass="firstcolumn">
+                                        <h:outputText value="MP3"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.mp3}"/>
+                                    </p:column>
+                                    <p:column  styleClass="firstcolumn">
+                                        <h:outputText value="USB"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.usb}"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="AUX"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.aux}"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <h:outputText value="Video DVD"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn" >
+                                        <h:outputText value="#{carController.selected.video}"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
                         </p:tab>
                     </p:accordionPanel>
-                    
+
                     <br/>
-             
-                    
-      <p:accordionPanel id="servicePanel" style="width: 100%;">
+                                 
+                    <p:accordionPanel id="servicePanel" style="width: 100%;">
                         <p:tab title="Additional equipment and services">
-                        
-                            <p:panelGrid id="addServTable" rendered="#{carController.selected != null}" styleClass="orangeBorderGrid">
-                                         
-                                      
-                        <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <p:selectBooleanCheckbox id="boosterSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.childBoosterPrice}, 'boosterSelector')"/>
-                               
-                                &nbsp;
-                                <h:outputText value="Child Booster seat"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText id="boosterPrice" value="#{carController.selected.childBoosterPrice}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <p:selectBooleanCheckbox id="childSafetySelector" styleClass="blackBox" onchange="calculate(#{carController.selected.childSeatUp1Price}, 'childSafetySelector')"/>
-                                &nbsp;
-                                <h:outputText value="Child safety seat (up to 1 year old)"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText id="safetySeatPrice" value="#{carController.selected.childSeatUp1Price}"/>
-                            </p:column>
-                        </p:row>
-                            
-                            <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <p:selectBooleanCheckbox id="childSeatSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.childSeatPrice}, 'childSeatSelector')"/>
-                                &nbsp;
-                                <h:outputText value="Child seat"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText id="childSeatPrice" value="#{carController.selected.childSeatPrice}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <p:selectBooleanCheckbox id="secondDriverSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.secondDriverPrice}, 'secondDriverSelector')"/>
-                                &nbsp;
-                                <h:outputText value="The second driver in the contract"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText id="secondDriverPrice" value="#{carController.selected.secondDriverPrice}"/>
-                            </p:column>
-                        </p:row>
-                            
-                            <p:row>
-                            <p:column styleClass="firstcolumn">
-                                <p:selectBooleanCheckbox id="gpsSelector" styleClass="blackBox"  onchange="calculate(#{carController.selected.gpsPrice}, 'gpsSelector')"/>
-                                &nbsp;
-                                <h:outputText value="GPS Navigator"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText id="gpsPrice" value="#{carController.selected.gpsPrice}"/>
-                            </p:column>
-                            <p:column styleClass="firstcolumn">
-                                <p:selectBooleanCheckbox id="wifiSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.wifiPrice}, 'wifiSelector')"/>
-                                &nbsp;
-                                <h:outputText value="Wi-Fi hotspot on board"/>
-                            </p:column>
-                            <p:column styleClass="secondcolumn">
-                                <h:outputText id="wifiPrice" value="#{carController.selected.wifiPrice}"/>
-                            </p:column>
-                        </p:row>
-                            
-                            
-                            <p:row styleClass="thirdcolumn">
-                                <p:column colspan="4" styleClass="thirdcolumn">
-                                <div> The equipment cannot be booked and is provided if available. </div>
-                                <div> The stated price covers the entire rental period. </div>
-                            </p:column>
-                        </p:row>
-                            
-                        
-                            
-                        </p:panelGrid>
+                            <p:panelGrid id="addServTable" rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <p:selectBooleanCheckbox id="boosterSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childBoosterPrice}, 'boosterSelector')"/>
+                                        &nbsp;
+                                        <h:outputText value="Child Booster seat"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText id="boosterPrice" value="#{carController.selected.childBoosterPrice}"/>
+                                        <h:outputText value="&euro;"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <p:selectBooleanCheckbox id="childSafetySelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childSeatUp1Price}, 'childSafetySelector')"/>
+                                        &nbsp;
+                                        <h:outputText value="Child safety seat (up to 1 year old)"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText id="safetySeatPrice" value="#{carController.selected.childSeatUp1Price}"/>
+                                        <h:outputText value="&euro;"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <p:selectBooleanCheckbox id="childSeatSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childSeatPrice}, 'childSeatSelector')"/>
+                                        &nbsp;
+                                        <h:outputText value="Child seat"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText id="childSeatPrice" value="#{carController.selected.childSeatPrice}"/>
+                                        <h:outputText value="&euro;"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <p:selectBooleanCheckbox id="secondDriverSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.secondDriverPrice}, 'secondDriverSelector')"/>
+                                        &nbsp;
+                                        <h:outputText value="The second driver in the contract"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText id="secondDriverPrice" value="#{carController.selected.secondDriverPrice}"/>
+                                        <h:outputText value="&euro;"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column styleClass="firstcolumn">
+                                        <p:selectBooleanCheckbox id="gpsSelector" styleClass="blackBox"  onchange="calculateAddServices(#{carController.selected.gpsPrice}, 'gpsSelector')"/>
+                                        &nbsp;
+                                        <h:outputText value="GPS Navigator"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText id="gpsPrice" value="#{carController.selected.gpsPrice}"/>
+                                        <h:outputText value="&euro;"/>
+                                    </p:column>
+                                    <p:column styleClass="firstcolumn">
+                                        <p:selectBooleanCheckbox id="wifiSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.wifiPrice}, 'wifiSelector')"/>
+                                        &nbsp;
+                                        <h:outputText value="Wi-Fi hotspot on board"/>
+                                    </p:column>
+                                    <p:column styleClass="secondcolumn">
+                                        <h:outputText id="wifiPrice" value="#{carController.selected.wifiPrice}"/>
+                                        <h:outputText value="&euro;"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row styleClass="thirdcolumn">
+                                    <p:column colspan="4" styleClass="thirdcolumn">
+                                        <div> The equipment cannot be booked and is provided if available. </div>
+                                        <div> The stated price covers the entire rental period. </div>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
                         </p:tab>
                     </p:accordionPanel>
-                    
-                   
                     
                     <p:separator/>
-                    <p:panelGrid style="width: 100%;">
+                    
+                    <p:panelGrid styleClass="noneBorderGrid">
                         <p:row>
-                            <p:column>
-                                <h:outputText value="Rent"/>
+                            <p:column style="text-align: center;"><h:outputText value="Rent"/></p:column>
+                            <p:column></p:column>
+                            <p:column style="text-align: center;"><h:outputText value="Delivery"/></p:column>
+                            <p:column></p:column>
+                            <p:column style="text-align: center;"><h:outputText value="Additional"/></p:column>
+                            <p:column></p:column>
+                            <p:column style="text-align: center;"><h:outputText value="Total"/></p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column style="height: 60px; text-align: center;">
+                                <h:outputText id="rentPrice" value="#{dealController.dates.get(2) * carController.selected.actualPrice}" style="font-size: 40px"/>
+                                <h:outputText value=" &euro;" style="font-size: 40px;"/>
                             </p:column>
-                            <p:column>
-                                <h:outputText value="Delivery" />
+                            <p:column style="height: 60px; text-align: center;">
+                                 <h:outputText value="+" style="font-size: 40px"/>
                             </p:column>
-                            <p:column>
-                                <h:outputText value="Additional"/>
+                            <p:column style="height: 60px; text-align: center;">
+                                <h:outputText id="deliveryPrice" value="0" style="font-size: 40px"/>
+                                 <h:outputText value=" &euro;" style="font-size: 40px"/>
                             </p:column>
-                            <p:column>
-                                <h:outputText value="Total"/>
+                             <p:column style="height: 60px; text-align: center;">
+                                 <h:outputText value="+" style="font-size: 40px"/>
+                            </p:column>
+                            <p:column style="height: 60px; text-align: center;">
+                                <h:outputText id="addPrice" value="0" style="font-size: 40px"/>
+                                 <h:outputText value=" &euro;" style="font-size: 40px"/>
+                            </p:column>
+                             <p:column style="height: 60px; text-align: center;">
+                                 <h:outputText value="=" style="font-size: 40px"/>
+                            </p:column>
+                            <p:column style="height: 60px; text-align: center;">
+                                <h:outputText id="totalPrice" value="#{dealController.dates.get(2) * carController.selected.actualPrice}" style="font-size: 40px"/>
+                                 <h:outputText value=" &euro;" style="font-size: 40px"/>
                             </p:column>
                         </p:row>
-                        
                         <p:row>
-                            <p:column>
-                                <h:outputText id="rentPrice"/>
+                            <p:column style="text-align: center;"><h:outputText value="#{dealController.dates.get(2)}d. x #{carController.selected.actualPrice}&euro;" style="font-size: small"/></p:column>
+                            <p:column></p:column>
+                            <p:column style="text-align: center;">
+                                <h:outputText id="pickup" value=""/>
+                                <h:outputText id="droppof" value=""/>
                             </p:column>
-                            <p:column>
-                                <h:outputText id="deliveryPrice" value=""/>
+                            <p:column></p:column>
+                            <p:column style="text-align: center;">
+                                <h:outputText id="booster" value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
+                                <h:outputText value=""/>
                             </p:column>
-                            <p:column>
-                                <h:outputText id="addPrice" value="0"/>
-                            </p:column>
-                            <p:column>
-                                <h:outputText id="totalPrice"/>
-                            </p:column>
+                            <p:column></p:column>
+                            <p:column style="text-align: center;"><h:outputText value=""/></p:column>
                         </p:row>
-                        
                     </p:panelGrid>
                     
                    
                     
                     <p:separator/>
                     
-                    <p:panelGrid style="width: 100%">
+                    <p:panelGrid styleClass="noneBorderGrid">
                         
                         <p:row>
-                            <p:column>
-                                <p:commandButton value="JS" onclick="showPrice()"/>
-                                
-                                <script>
-                                    function my1(price){
-                                        
-                                        var text = document.getElementById("CarViewForm:addPrice").innerHTML;
-                                        
-                                        var checkBox = document.getElementById("CarViewForm:servicePanel:wifiSelector_input");
-                                        
-                                        if(checkBox.checked === true){
-                                        
-                                      
-                                       
-                                                           
-                                      //  var addServicePrice = document.getElementById("CarViewForm:j_idt396:gpsPrice").innerHTML;
-                                        
-                                        var int = parseInt(text) + parseInt(price);
-                                        
-                                      
-                                        document.getElementById("CarViewForm:addPrice").innerHTML=int;
-                                        }else {
-                                             var int = parseInt(text) - parseInt(price);
-                                        
-                                      
-                                        document.getElementById("CarViewForm:addPrice").innerHTML=int;
-                                        }
-                                  
-                                                            
-                                    }
-                                </script>
-                                
-                                <script>
-                                    function l(){
-                                       
-                                    }
-                                </script>
-                               
-                                
-                                <script>
-                                    function f(){
-                                      var numberOfDays = #{dealController.dates.get(2)};
-                                      var headerDays = document.getElementById("CarViewForm:ap7_header").innerHTML;
-                                      
-                                      var n = headerDays.indexOf("7");
-                                     if(headerDays.includes(numberOfDays)){
-                                         document.getElementById("CarViewForm:ap7_header").style.background="red";
-                                     }else alert("NO");
-                                        
-                                    }
-                                </script>
-                                
-                                <p:commandButton value="BOOK NOW" onclick="CarViewDialog.hide()"/>
+                            <p:column style="text-align: right;">
+                                <p:commandButton value="BOOK NOW" actionListener="#{dealController.prepareCreate()}" onsuccess="PF('CarViewDialog').hide()" oncomplete="PF('DealCreateDialog').show()" style="height: 40px; width: 150px; background: orange !important; color: black !important"/>
                             </p:column> 
                         </p:row>
                     </p:panelGrid>
-                         
-                    
-                </h:panelGroup>
+               </h:panelGroup>
+            
             </h:form>
         </p:dialog>
 

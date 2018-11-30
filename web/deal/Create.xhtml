@@ -7,28 +7,147 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
+        
+        <h:outputStylesheet name="css/createdeal.css"/>
 
         <p:dialog id="DealCreateDlg" widgetVar="DealCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDealTitle}">
             <h:form id="DealCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{dealController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateDealLabel_dealId}" for="dealId" />
-                        <p:inputText id="dealId" value="#{dealController.selected.dealId}" title="#{bundle.CreateDealTitle_dealId}"/>
-                        <p:outputLabel value="#{bundle.CreateDealLabel_startDate}" for="startDate" />
-                        <p:calendar id="startDate" pattern="MM/dd/yyyy" value="#{dealController.selected.startDate}" title="#{bundle.EditDealTitle_startDate}" required="true" requiredMessage="#{bundle.EditDealRequiredMessage_startDate}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateDealLabel_endDate}" for="endDate" />
-                        <p:calendar id="endDate" pattern="MM/dd/yyyy" value="#{dealController.selected.endDate}" title="#{bundle.EditDealTitle_endDate}" required="true" requiredMessage="#{bundle.EditDealRequiredMessage_endDate}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateDealLabel_dealExist}" for="dealExist" />
-                        <p:selectBooleanCheckbox id="dealExist" value="#{dealController.selected.dealExist}" required="true" requiredMessage="#{bundle.EditDealRequiredMessage_dealExist}"/>
-                        <p:outputLabel value="#{bundle.CreateDealLabel_cId}" for="cId" />
-                        <p:selectOneMenu id="cId" value="#{dealController.selected.cId}" required="true" requiredMessage="#{bundle.EditDealRequiredMessage_cId}">
-                            <f:selectItems value="#{carController.itemsAvailableSelectOne}"
-                                           var="cIdItem"
-                                           itemValue="#{cIdItem}"/>
-                        </p:selectOneMenu>
+                                         
+                    <p:panelGrid style="width: 100%">
+                        <p:row style="height: 60px">
+                        <p:column colspan="2">
+                                    <h:outputText value="Pick Up" style="font-size: 25px;"/>
+                        </p:column>
+                        <p:column colspan="2">
+                                    <h:outputText value="Drop Off" style="font-size: 25px;"/>
+                        </p:column>
+                        </p:row>
+                        <p:row>
+                        <p:column colspan="2">
+                            <h:outputText value="#{dealController.dates.get(0)}" style="font-size: 16px; font-weight: bold;"/>
+                        </p:column>
+                        <p:column colspan="2">
+                                    <h:outputText value="#{dealController.dates.get(1)}" style="font-size: 16px; font-weight: bold;"/>
+                        </p:column>
+                        </p:row>
+                        <p:row>
+                        <p:column>
+                                    <p:outputLabel for="pickUpTime" value="Pick-up time:"/>
+                        </p:column>
+                        <p:column>
+                                    <p:selectOneMenu id="pickUpTime" value="">
+                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                                    </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                                    <p:outputLabel for="dropOffTime" value="Drop-off time:"/>
+                        </p:column>
+                        <p:column>
+                                    <p:selectOneMenu id="dropOffTime" value="">
+                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                                    </p:selectOneMenu>
+                        </p:column>
+                        </p:row>
+                        <p:row>
+                        <p:column>
+                                    <p:outputLabel for="pickUpCity" value="Pick-up city:"/>
+                                    </p:column>
+                                    <p:column>
+                                    <h:outputText id="pickUpCity" value=""/>
+                                    </p:column>
+                                    <p:column>
+                                    <p:outputLabel for="dropOffCity" value="Drop-off city:"/>
+                                    </p:column>
+                                    <p:column>
+                                    <h:outputText id="dropOffCity" value=""/>
+                                    </p:column>
+                        </p:row>
+                        <p:row>
+                                    <p:column>
+                                    <p:outputLabel for="pickUpPlace" value="Pick-up place:"/>
+                                    </p:column>
+                                    <p:column>
+                                    <p:selectOneMenu id="pickUpPlace" value="">
+                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                                    </p:selectOneMenu>
+                                        </p:column>
+                         <p:column>
+                                    <p:outputLabel for="dropOffPlace" value="Drop-off place:"/>
+                                     </p:column>
+                                     <p:column>
+                                    <p:selectOneMenu id="dropOffPlace" value="">
+                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                                    </p:selectOneMenu>  
+                                          </p:column>
+                        </p:row>
+                                
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{dealController.create}" value="#{bundle.Save}" update="display,:DealListForm:datalist,:growl" oncomplete="handleSubmit(args,'DealCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="DealCreateDialog.hide()"/>
+                    <br/>
+
+                    <p:toolbar style="width: 100%; height: 40px !important; background: orange !important;">
+                        <f:facet name="left">
+                            <h:outputText value="Total amount"/>
+                            <h:outputLink id="content" value="#">
+                                <h:outputText value="(show detalisation)" />
+                            </h:outputLink>
+                            <p:tooltip id="toolTipContent" for="content" position="bottom">
+                                <p:panel style="width: 100px; height: 100px;"/>
+                            </p:tooltip>
+                        </f:facet>
+                        
+                        <f:facet name="right">
+                            <h:outputLabel for="amount"/>
+                            <h:outputText id="amount" value="150 &euro;"/>
+                        </f:facet>
+                    </p:toolbar>
+                    <br/>
+
+                    <p:panelGrid columns="1">
+                        <h:outputText value="Driver data" style="font-size: 60px;"/>
+                        <h:outputText value="Name and surname in Latin (as in driver license)"/>
+                        <h:inputText value=""/>
+                        <h:outputText value="All national driver licenses of the CIS countries are valid"/>
+                        <h:outputText value="Date of birth"/>
+                        <h:inputText value=""/>
+                        <h:outputText value="Email"/>
+                        <h:inputText value=""/>
+                        <h:outputText value="At the end of the reservation we will send you a voucher confirming the reservation."/>
+                        <h:outputText value="Telephone"/>
+                        <h:inputText value=""/>
+                        <h:outputText value="Backup phone (if the first is unavailable)"/>
+                        <h:inputText value=""/>
+                        <h:outputText value="Your comment"/>
+                        <h:inputText value=""/>
+                        <h:outputText value="Our technologies guarantee the confidentiality of your data."/>
+                    </p:panelGrid>
+                   <p:separator/>
+                   <p:panelGrid columns="3" style="width: 100%">
+                       <p:column style="text-align: left;">
+                       <p:graphicImage name="img/custom/visa_1.jpg"/>
+                       </p:column>
+                       <p:column style="text-align: right;">
+                       <p:selectBooleanCheckbox/>
+                       &nbsp;
+                       <h:outputText value="I accept "/>
+                       <h:outputLink value="" style="color: black !important">terms of use</h:outputLink>
+                       </p:column>
+                       <p:column style="text-align: right;">
+                           <p:commandButton value="PAY NOW" style="width: 150px; height: 30px;"/>
+                       </p:column>
+                    </p:panelGrid>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
