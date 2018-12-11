@@ -7,11 +7,14 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
+        
+       <h:outputStylesheet name="css/createcar.css"/>
+       <h:outputScript library="js" name="createcar.js"/> 
 
         <p:dialog id="CarCreateDlg" widgetVar="CarCreateDialog" modal="true" resizable="false" width="1300" height="800" appendTo="@(body)" header="#{msg.CreateCarTitle}">
             <h:form id="CarCreateForm">
                 <h:panelGroup id="display">
-                    <p:accordionPanel multiple="true" activeIndex="0,1,2,3,4,5,6" >
+                    <p:accordionPanel id="dataPanel" multiple="true" activeIndex="0,1,2,3,4,5,6" >
                         <p:tab title="Common">
                             <p:panelGrid columns="7" style="width: 100%; border: 0px;" styleClass="ui-noborder">
                                 <h:outputLabel value="Class"  style="font-size: 14px;"/>
@@ -204,12 +207,12 @@
                                     <p:column>
                                         <h:outputLabel value="Free:" style="font-size: 14px;"/>
                                         &nbsp;
-                                        <p:selectBooleanCheckbox value="#{carController.selected.unlimitKmFree}"/>
+                                        <p:selectBooleanCheckbox id="limitKm" onchange="enableElement('limitKm','unlimPrice')" value="#{carController.selected.unlimitKmFree}"/>
                                     </p:column>
                                     <p:column>
                                         <h:outputLabel value="Price/day:" style="font-size: 14px;"/>
                                         &nbsp;
-                                        <p:inputText value="#{carController.selected.unlimitPrice}" style="width: 100px;"/>
+                                        <p:inputText id="unlimPrice" value="#{carController.selected.unlimitPrice}" style="width: 100px;"  onfocus="disableElement('limitKm','unlimPrice')" onblur="enableCheckbox('limitKm','unlimPrice')"/>
                                     </p:column>
                                     <p:column>
                                         <h:outputLabel value="Limit (km/day)" style="font-size: 14px;"/>

@@ -1,0 +1,4 @@
+.ui-inputfield .ui-inputtext .ui-state-disabled {
+    background: red !important;
+}
+

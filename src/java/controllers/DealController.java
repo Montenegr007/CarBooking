@@ -20,6 +20,9 @@ import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.component.html.HtmlBody;
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.component.html.HtmlOutputText;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -40,10 +43,32 @@ public class DealController implements Serializable {
     
     private Date startDate;
     private Date endDate;
+    private String pickUpCity;
+    private String dropOffCity;
     
+      
+    /*-------------------------------------------------------------*/
     
     public DealController() {
     }
+
+    public String getPickUpCity() {
+        return pickUpCity;
+    }
+
+    public String getDropOffCity() {
+        return dropOffCity;
+    }
+
+    public void setPickUpCity(String pickUpCity) {
+        this.pickUpCity = pickUpCity;
+    }
+
+    public void setDropOffCity(String dropOffCity) {
+        this.dropOffCity = dropOffCity;
+    }
+    
+    
 
     public List<String> getDates() {
         return dates;
@@ -106,7 +131,7 @@ public class DealController implements Serializable {
     private DealFacade getFacade() {
         return ejbFacade;
     }
-
+    
     public void freeCarList() throws IOException{
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
@@ -157,6 +182,11 @@ public class DealController implements Serializable {
     
     public Deal prepareCreate() {
         selected = new Deal();
+        selected.setPickUpCity(pickUpCity);
+        selected.setDropOffCity(dropOffCity);
+        selected.setStartDate(startDate);
+        selected.setEndDate(endDate);
+        
         initializeEmbeddableKey();
         return selected;
     }

@@ -14,13 +14,13 @@
             <h:form id="DealCreateForm">
                 <h:panelGroup id="display">
                                          
-                    <p:panelGrid style="width: 100%">
+                    <p:panelGrid style="width: 100%" styleClass="noneBorderGrid">
                         <p:row style="height: 60px">
                         <p:column colspan="2">
-                                    <h:outputText value="Pick Up" style="font-size: 25px;"/>
+                                    <h:outputText value="Pick Up" style="font-size: 30px;"/>
                         </p:column>
                         <p:column colspan="2">
-                                    <h:outputText value="Drop Off" style="font-size: 25px;"/>
+                                    <h:outputText value="Drop Off" style="font-size: 30px;"/>
                         </p:column>
                         </p:row>
                         <p:row>
@@ -36,7 +36,7 @@
                                     <p:outputLabel for="pickUpTime" value="Pick-up time:"/>
                         </p:column>
                         <p:column>
-                                    <p:selectOneMenu id="pickUpTime" value="">
+                            <p:selectOneMenu id="pickUpTime" value="#{dealController.selected.startTime}">
                                             <f:selectItem itemLabel="Select One" itemValue="" />
                                             <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
                                             <f:selectItem itemLabel="PS4" itemValue="PS4" />
@@ -47,7 +47,7 @@
                                     <p:outputLabel for="dropOffTime" value="Drop-off time:"/>
                         </p:column>
                         <p:column>
-                                    <p:selectOneMenu id="dropOffTime" value="">
+                            <p:selectOneMenu id="dropOffTime" value="">
                                             <f:selectItem itemLabel="Select One" itemValue="" />
                                             <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
                                             <f:selectItem itemLabel="PS4" itemValue="PS4" />
@@ -60,7 +60,7 @@
                                     <p:outputLabel for="pickUpCity" value="Pick-up city:"/>
                                     </p:column>
                                     <p:column>
-                                    <h:outputText id="pickUpCity" value=""/>
+                                        <h:outputText id="pickUpCity" value=""/>
                                     </p:column>
                                     <p:column>
                                     <p:outputLabel for="dropOffCity" value="Drop-off city:"/>
@@ -97,7 +97,7 @@
                     </p:panelGrid>
                     <br/>
 
-                    <p:toolbar style="width: 100%; height: 40px !important; background: orange !important;">
+                    <p:toolbar style="width: 100%; height: 50px !important; background: orange !important;">
                         <f:facet name="left">
                             <h:outputText value="Total amount"/>
                             <h:outputLink id="content" value="#">
@@ -113,25 +113,95 @@
                             <h:outputText id="amount" value="150 &euro;"/>
                         </f:facet>
                     </p:toolbar>
-                    <br/>
+                  
 
-                    <p:panelGrid columns="1">
-                        <h:outputText value="Driver data" style="font-size: 60px;"/>
-                        <h:outputText value="Name and surname in Latin (as in driver license)"/>
-                        <h:inputText value=""/>
-                        <h:outputText value="All national driver licenses of the CIS countries are valid"/>
-                        <h:outputText value="Date of birth"/>
-                        <h:inputText value=""/>
-                        <h:outputText value="Email"/>
-                        <h:inputText value=""/>
-                        <h:outputText value="At the end of the reservation we will send you a voucher confirming the reservation."/>
+                    <p:panelGrid style="width: 100%" styleClass="noneBorderGrid">
+                        <p:row style="height: 60px">
+                            <p:column colspan="2">
+                        <h:outputText value="Driver data" style="font-size: 30px;"/>
+                            </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-bottom: 0;">
+                        <h:outputText value="Name and surname in Latin (as in driver license)" style=""/>
+                         </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2">
+                                <p:inputText value="" placeholder="Ivan Ivanov" />
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-top: 0;">
+                        <h:outputText value="All national driver licenses of the CIS countries are valid" style="font-size: x-small; opacity: 0.6; padding-top: 0 !important;"/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-bottom: 0;">
+                        <h:outputText value="Date of birth"/> 
+                        </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+                        
+                        <p:inputText value="" placeholder="06.05.1980"/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-bottom: 0;">
+                        <h:outputText value="Email"/></p:column>
+                        </p:row>
+                        
+                         <p:row>
+                            <p:column colspan="2">
+                        <p:inputText value="" placeholder="ivanov@mail.ru"/>
+                            </p:column>
+                        </p:row>
+                        
+                         <p:row>
+                            <p:column colspan="2" style="padding-top: 0;">
+                        <h:outputText value="At the end of the reservation we will send you a voucher confirming the reservation." style="font-size: x-small; opacity: 0.6; padding-top: 0 !important;"/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-bottom: 0;">
                         <h:outputText value="Telephone"/>
-                        <h:inputText value=""/>
+                            </p:column>
+                        </p:row>
+                        
+                         <p:row>
+                            <p:column colspan="2">
+                        <p:inputText value="" placeholder="+79826259283"/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-bottom: 0;">
                         <h:outputText value="Backup phone (if the first is unavailable)"/>
-                        <h:inputText value=""/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2">
+                        <p:inputText value="" placeholder="+79826259283"/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2" style="padding-bottom: 0;">
                         <h:outputText value="Your comment"/>
-                        <h:inputText value=""/>
+                        </p:column>
+                        </p:row>
+                         <p:row>
+                            <p:column colspan="2">
+                                <p:inputText value="" placeholder="Leave your comment..." style="height: 70px;"/>
+                        </p:column>
+                        </p:row>
+                         <p:row style="height: 40px">
+                             <p:column style="width: 10%">
+                                <p:graphicImage name="css/icons/zamok_1.png"/>
+                            </p:column>
+                             <p:column>
                         <h:outputText value="Our technologies guarantee the confidentiality of your data."/>
+                        </p:column>
+                        </p:row>
                     </p:panelGrid>
                    <p:separator/>
                    <p:panelGrid columns="3" style="width: 100%">
@@ -142,7 +212,7 @@
                        <p:selectBooleanCheckbox/>
                        &nbsp;
                        <h:outputText value="I accept "/>
-                       <h:outputLink value="" style="color: black !important">terms of use</h:outputLink>
+                       <h:outputLink value="" style="color: black !important; text-decoration: underline;">terms of use</h:outputLink>
                        </p:column>
                        <p:column style="text-align: right;">
                            <p:commandButton value="PAY NOW" style="width: 150px; height: 30px;"/>

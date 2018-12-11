@@ -13,6 +13,8 @@
                 <h:outputStylesheet name="css/index.css"/>
                 
             </f:facet>
+           
+           
             
                
         </h:head>
@@ -80,13 +82,13 @@
                                 <p:row>
                                     <p:column>
                                         <div class="ui-inputgroup">
-                                            <p:inputText placeholder="Enter location"/>
+                                            <p:inputText placeholder="Enter location" value="#{dealController.pickUpCity}"/>
                                             <p:commandButton icon="ui-icon-location"/>  
                                         </div>
                                     </p:column>
                                     <p:column>
                                         <div class="ui-inputgroup">
-                                            <p:inputText placeholder="Enter location"/>
+                                            <p:inputText placeholder="Enter location" value="#{dealController.dropOffCity}"/>
                                             <p:commandButton icon="ui-icon-location"/>  
                                         </div>
                                     </p:column>
@@ -215,11 +217,16 @@
                 
                 
                 
-                <p:panel style="height: 400px; width: 1600px; margin: 0 auto; background-color: #1b201a; border: 0;"/>
-                <p:panel style="height: 80px; width: 1600px; margin: 0 auto;  border: 0; background: black !important;">
+                <p:panel id="blackPanel" style="height: 400px; width: 1600px; margin: 0 auto; background-color: #1b201a; border: 0; display: flex; align-items: center; justify-content: center;">
+                    <p:toolbar style="height: 40px; width: 500px"/>
                    
-                    <p:toolbar>
-                        <f:facet name="left" class="downgroup">
+                </p:panel>
+               
+                
+                <p:panel style="height: 80px; width: 1600px; margin: 0 auto; border: 0; background: black !important; position: relative;" styleClass="myPanel">
+                   
+                    <p:toolbar styleClass="footerToolbar">
+                        <f:facet name="left">
                             <h:outputLink>Contacts</h:outputLink>
                             <h:outputLink>Drive group</h:outputLink>
                             <h:outputLink>Career with Drive</h:outputLink>
@@ -228,7 +235,7 @@
                             <h:outputLink>Imprint&amp;Privacy</h:outputLink>
                             <h:outputLink>Terms&amp;Conditions</h:outputLink>
                         </f:facet>
-                        <f:facet name="right" class="downgroup">
+                        <f:facet name="right">
                             <h:outputLink><p:graphicImage name="css/icons/facebook4.png"/></h:outputLink>
                             <h:outputLink><p:graphicImage name="css/icons/instagram.png"/></h:outputLink>
                             <h:outputLink><p:graphicImage name="css/icons/twitter.png"/></h:outputLink>
@@ -242,9 +249,8 @@
                 
                 
             </h:form>
-                    
-                     
-
+                       
+           
         </h:body>
 
     </f:view>

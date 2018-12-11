@@ -11,7 +11,7 @@
         <h:outputStylesheet name="css/viewcar.css"/>
         <h:outputScript library="js" name="viewcar.js"/>          
         
-        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" width="900" resizable="false" appendTo="@(body)" header="CAR DETAIL">
+        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" width="900" resizable="false" appendTo="@(body)" header="CAR DETAIL" onShow="test()">
                         
             <h:form id="CarViewForm">
           
@@ -156,7 +156,8 @@
                                 <h:outputText value="Year of manufacture"/>
                             </p:column>
                             <p:column styleClass="right">
-                                <h:outputText value="#{carController.selected.productionYear}"/>
+                                <h:outputText id="pYear" value="#{carController.selected.productionYear}"/>
+                           
                             </p:column>
                             <p:column rowspan="13" styleClass="fifthcolumn">
                                 <p:graphicImage name="img/cars/kia_ceed_black.jpeg" height="225px" width="300px"/>
@@ -202,7 +203,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.includedCdw != true}">
-                                <p:selectBooleanCheckbox id="cdwSelector" rendered="#{carController.selected.includedCdw != true}" styleClass="blackBox" onchange="calculate(#{carController.selected.cdwPrice}, 'cdwSelector')"/>
+                                <p:selectBooleanCheckbox id="cdwSelector" value="#{dealController.selected.cdw}" rendered="#{carController.selected.includedCdw != true}" styleClass="blackBox" onchange="calculate(#{carController.selected.cdwPrice}, 'cdwSelector')"/>
                                 &nbsp;
                                 <h:outputText rendered="#{carController.selected.includedCdw != true}" value="CDW - Collision Damage Waiver"/>
                             </p:column>
@@ -221,7 +222,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.includedScdw != true}">
-                                <p:selectBooleanCheckbox id="scdwSelector" rendered="#{carController.selected.includedScdw != true}" styleClass="blackBox" onchange="calculate(#{carController.selected.cdwPrice}, 'scdwSelector')"/>
+                                <p:selectBooleanCheckbox id="scdwSelector" value="#{dealController.selected.scdw}" rendered="#{carController.selected.includedScdw != true}" styleClass="blackBox" onchange="calculate(#{carController.selected.cdwPrice}, 'scdwSelector')"/>
                                 &nbsp;
                                 <h:outputText rendered="#{carController.selected.includedScdw != true}" value="SCDW - Super CDW"/>
                             </p:column>
@@ -240,7 +241,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.includedPai != true}">
-                                <p:selectBooleanCheckbox id="paiSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.paiPrice}, 'paiSelector')"/>
+                                <p:selectBooleanCheckbox id="paiSelector" value="#{dealController.selected.pai}" styleClass="blackBox" onchange="calculate(#{carController.selected.paiPrice}, 'paiSelector')"/>
                                 &nbsp;
                                 <h:outputText value="PAI - Personal Accident Insurance"/>
                             </p:column>
@@ -259,7 +260,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.includedTheft != true}" >
-                                <p:selectBooleanCheckbox id="theftSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.theftPrice}, 'theftSelector')"/>
+                                <p:selectBooleanCheckbox id="theftSelector" value="#{dealController.selected.theft}" styleClass="blackBox" onchange="calculate(#{carController.selected.theftPrice}, 'theftSelector')"/>
                                 &nbsp;
                                 <h:outputText value="TI - Theft Insurance"/>
                             </p:column>
@@ -278,7 +279,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.includedGreenCard != true}">
-                                <p:selectBooleanCheckbox id="greenCardSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.greenCardPrice}, 'greenCardSelector')"/>
+                                <p:selectBooleanCheckbox id="greenCardSelector" value="#{dealController.selected.greenCard}" styleClass="blackBox" onchange="calculate(#{carController.selected.greenCardPrice}, 'greenCardSelector')"/>
                                 &nbsp;
                                 <h:outputText value="Green Card"/>
                             </p:column>
@@ -302,7 +303,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.noDepositPrice != null}">
-                                <p:selectBooleanCheckbox id="noDepositSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.noDepositPrice}, 'noDepositSelector')"/>
+                                <p:selectBooleanCheckbox id="noDepositSelector" value="#{dealController.selected.noDeposit}" styleClass="blackBox" onchange="calculate(#{carController.selected.noDepositPrice}, 'noDepositSelector')"/>
                                 &nbsp;
                                 <h:outputText value="No deposit"/>
                             </p:column>
@@ -321,7 +322,7 @@
                         </p:row>
                         <p:row>
                             <p:column rendered="#{carController.selected.noFranchisePrice != null}">
-                                <p:selectBooleanCheckbox id="noFranchiseSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.noFranchisePrice}, 'noFranchiseSelector')"/>
+                                <p:selectBooleanCheckbox id="noFranchiseSelector" value="#{dealController.selected.noFranchise}" styleClass="blackBox" onchange="calculate(#{carController.selected.noFranchisePrice}, 'noFranchiseSelector')"/>
                                 &nbsp;
                                 <h:outputText value="No franchise"/>
                             </p:column>
@@ -363,7 +364,7 @@
                         </p:row>
                         <p:row rendered="#{carController.selected.unlimitPrice != null}">
                             <p:column >
-                                <p:selectBooleanCheckbox id="unlimitSelector" styleClass="blackBox" onchange="calculate(#{carController.selected.unlimitPrice}, 'unlimitSelector')"/>
+                                <p:selectBooleanCheckbox id="unlimitSelector" value="#{dealController.selected.noLimit}" styleClass="blackBox" onchange="calculate(#{carController.selected.unlimitPrice}, 'unlimitSelector')"/>
                                 &nbsp;
                                 <h:outputText value="No limit mileage"/>
                             </p:column>
@@ -580,7 +581,7 @@
                             <p:panelGrid id="addServTable" rendered="#{carController.selected != null}" styleClass="noneBorderGrid">
                                 <p:row>
                                     <p:column styleClass="firstcolumn">
-                                        <p:selectBooleanCheckbox id="boosterSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childBoosterPrice}, 'boosterSelector')"/>
+                                        <p:selectBooleanCheckbox id="boosterSelector" value="#{dealController.selected.booster}" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childBoosterPrice}, 'boosterSelector')"/>
                                         &nbsp;
                                         <h:outputText value="Child Booster seat"/>
                                     </p:column>
@@ -589,7 +590,7 @@
                                         <h:outputText value="&euro;"/>
                                     </p:column>
                                     <p:column styleClass="firstcolumn">
-                                        <p:selectBooleanCheckbox id="childSafetySelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childSeatUp1Price}, 'childSafetySelector')"/>
+                                        <p:selectBooleanCheckbox id="childSafetySelector" value="#{dealController.selected.uptoOneSeat}" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childSeatUp1Price}, 'childSafetySelector')"/>
                                         &nbsp;
                                         <h:outputText value="Child safety seat (up to 1 year old)"/>
                                     </p:column>
@@ -600,7 +601,7 @@
                                 </p:row>
                                 <p:row>
                                     <p:column styleClass="firstcolumn">
-                                        <p:selectBooleanCheckbox id="childSeatSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childSeatPrice}, 'childSeatSelector')"/>
+                                        <p:selectBooleanCheckbox id="childSeatSelector" value="#{dealController.selected.childSeat}" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.childSeatPrice}, 'childSeatSelector')"/>
                                         &nbsp;
                                         <h:outputText value="Child seat"/>
                                     </p:column>
@@ -609,7 +610,7 @@
                                         <h:outputText value="&euro;"/>
                                     </p:column>
                                     <p:column styleClass="firstcolumn">
-                                        <p:selectBooleanCheckbox id="secondDriverSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.secondDriverPrice}, 'secondDriverSelector')"/>
+                                        <p:selectBooleanCheckbox id="secondDriverSelector" value="#{dealController.selected.secondDriver}" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.secondDriverPrice}, 'secondDriverSelector')"/>
                                         &nbsp;
                                         <h:outputText value="The second driver in the contract"/>
                                     </p:column>
@@ -620,7 +621,7 @@
                                 </p:row>
                                 <p:row>
                                     <p:column styleClass="firstcolumn">
-                                        <p:selectBooleanCheckbox id="gpsSelector" styleClass="blackBox"  onchange="calculateAddServices(#{carController.selected.gpsPrice}, 'gpsSelector')"/>
+                                        <p:selectBooleanCheckbox id="gpsSelector" value="#{dealController.selected.gpsNavigator}" styleClass="blackBox"  onchange="calculateAddServices(#{carController.selected.gpsPrice}, 'gpsSelector')"/>
                                         &nbsp;
                                         <h:outputText value="GPS Navigator"/>
                                     </p:column>
@@ -629,7 +630,7 @@
                                         <h:outputText value="&euro;"/>
                                     </p:column>
                                     <p:column styleClass="firstcolumn">
-                                        <p:selectBooleanCheckbox id="wifiSelector" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.wifiPrice}, 'wifiSelector')"/>
+                                        <p:selectBooleanCheckbox id="wifiSelector" value="#{dealController.selected.wifi}" styleClass="blackBox" onchange="calculateAddServices(#{carController.selected.wifiPrice}, 'wifiSelector')"/>
                                         &nbsp;
                                         <h:outputText value="Wi-Fi hotspot on board"/>
                                     </p:column>

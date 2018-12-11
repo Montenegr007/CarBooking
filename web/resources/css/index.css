@@ -164,7 +164,7 @@
 
 /*---------------------Toolbar CSS------------*/
 
-.ui-toolbar {
+/*.ui-toolbar {
     height: 74px;
     width: 70%;
     margin: 0 auto;
@@ -294,34 +294,8 @@
     font-size: 14px;
 }
 
-a {
-    color: white !important;
-    text-shadow: none !important;
-    font-size: small !important;
-    font-weight: normal !important;
-    padding-right: 15px;
-    text-decoration: none;
-    padding-top: 17px;
-        
-}
-
-a:hover {
-    font-weight: bold !important;
-    
-}
-
 img:hover {
     background: orange;
-}
-
-.downgroup.ui-toolbar-group-left {
-    margin-top: 25px;
-    margin-left: 17px;
-}
-
-.downgroup.ui-toolbar-group-right {
-    margin-top: 40px;
-    margin-right: 17px;
 }
 
 .ui-accordion {
@@ -365,10 +339,58 @@ img:hover {
     margin-left: 1570px;;
 }
 
+.myPanel{
+height: 80px; 
+width: 1600px; 
+margin: 0 auto; 
+border: 0; 
+background: black !important;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
-@media screen and (max-width: 420px){
+
+/*.myPanel .ui-panel-content{
+    height: 62.4px;
+}*/
+
+
+.footerToolbar {
+    height: 40px; 
+    width: 1000px; 
+    background: transparent;
+    border: none;
     
 }
+
+.ui-toolbar-group-left {
+    margin-top: 9.5px;
+ }
+
+.ui-toolbar-group-right {
+    height: 32px;
+    margin-top: 3px;
+}
+
+a {
+    color: white !important;
+    text-shadow: none !important;
+    font-size: small !important;
+    font-weight: normal !important;
+    padding-right: 15px;
+    text-decoration: none;
+   
+   
+        
+}
+
+a:hover {
+    
+    
+}
+
+
 
 
 

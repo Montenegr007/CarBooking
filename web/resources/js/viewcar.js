@@ -91,3 +91,12 @@ function calculateAddServices(price, boxName) {
     }
 }
 
+function test(){
+    
+    var days = parseInt(document.getElementById("CarViewForm:numOfDays").innerHTML);
+    if(days >= 8){
+        document.getElementById('CarViewForm:numOfDays').style.cssText = "background: red !important;";
+    } else {
+        document.getElementById('CarViewForm:numOfDays').style.cssText = "background: green !important;";
+    }
+}
