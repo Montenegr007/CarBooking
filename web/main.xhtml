@@ -9,91 +9,70 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <title>Drive rent-a-car</title>
                 <h:outputStylesheet name="css/index.css"/>
-                
             </f:facet>
-           
-           
-            
-               
         </h:head>
 
        
         <h:body>
                      
             <h:form id="WelcomeForm">
-               
-               
-                <p:panel style="height: 100px; width: 1600px; margin: 0 auto; background-color: black; border: 0;">
-                    <p:toolbar>
+                              
+                <p:panel styleClass="headerPanel">
+                    
+                    <p:toolbar styleClass="headerToolbar">
                         <f:facet name="left">
-                            <p:outputLabel value="DRIVE" style="font-size: 65px; color: white;"/>
+                            <p:outputLabel value="DRIVE"/>
                             <p:outputLabel value="&reg;" style="font-size: 20px; color: white;"/>
                         </f:facet>
-                         <f:facet name="right">
-                         
-                             <p:commandButton id="login" value="LOG IN" styleClass="login" />
+                        
+                        <f:facet name="right">
+                            <p:commandButton id="login" value="LOG IN" styleClass="loginButton" />
                             
-                             <p:commandButton id="menuButton" value="MENU" icon="ui-icon-menu" styleClass="menu">
-                                 <p:slideMenu overlay="true" trigger="menuButton" my="left top" at="left bottom">
+                            <p:commandButton id="menuButton" value="MENU" styleClass="menuButton">
+                                <p:slideMenu overlay="true" trigger="menuButton" my="left top" at="left bottom" styleClass="slideMenu">
                                      <p:menuitem value="Car rental"/>
                                      <p:menuitem value="Truck rental"/>
                                      <p:menuitem value="Best deals"/>
                                      <p:menuitem value="Locations"/>
-                                     <p:submenu label="My reservation">
-                                         <p:menuitem value="Change reservation"/>
-                                         <p:menuitem value="Cancel reservation"/>
-                                         <p:menuitem value="MyDrive"/>
+                                     <p:separator/>
+                                     <p:submenu label="For partners">
+                                     <p:menuitem value="Become partners"/>
+                                     <p:menuitem value="Ask question"/>
                                      </p:submenu>
-                                     <p:submenu label="Rental services">
-                                         <p:menuitem value="Service overview"/>
-                                         <p:menuitem value="Drive cards"/>
-                                         <p:menuitem value="Rental information"/>
-                                     </p:submenu>
-                                     <p:menuitem value="For partners"/>
                                      <p:menuitem value="Career with Drive"/>
-                                 </p:slideMenu>
-                             </p:commandButton>
-                             
-                               <p:selectOneMenu  value="#{indexController.locale}" onchange="submit()" valueChangeListener="#{indexController.localeChanged}">
+                                </p:slideMenu>
+                            </p:commandButton> 
+                                                    
+                            <p:selectOneMenu  value="#{indexController.locale}" onchange="submit()" valueChangeListener="#{indexController.localeChanged}" styleClass="localeSelector">
                                  <f:selectItem itemLabel="English" itemValue="English"/>
                                  <f:selectItem itemLabel="Russian" itemValue="Russian"/> 
-                               </p:selectOneMenu>                             
-                            
-
-
-                        
-                             
+                            </p:selectOneMenu>                 
                         </f:facet>
                     </p:toolbar>
                                                     
                 </p:panel>
-                <p:panel style="height: 200px; width: 1600px; margin: 0 auto; border: 0;">
+                
+                <p:panel styleClass="selectPanel">
                     
                             <p:panelGrid>
                                 <p:row style="height: 30px;">
+                                    <p:column><p:outputLabel value="#{msg.PickupPlace}"/></p:column>
+                                    <p:column><p:outputLabel value="#{msg.ReturnPlace}"/></p:column>
                                     <p:column><p:outputLabel value="#{msg.PickupDate}"/></p:column>
-                                    <p:column><p:outputLabel value="RETURN"/></p:column>
-                                    <p:column><p:outputLabel value="PICKUP TIME"/></p:column>
-                                    <p:column><p:outputLabel value="RETURN TIME"/></p:column>
+                                    <p:column><p:outputLabel value="#{msg.ReturnDate}"/></p:column>
                                     <p:column><p:outputLabel value=""/></p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>
-                                        <div class="ui-inputgroup">
-                                            <p:inputText placeholder="Enter location" value="#{dealController.pickUpCity}"/>
-                                            <p:commandButton icon="ui-icon-location"/>  
-                                        </div>
+                                        <p:inputText placeholder="Enter location" value="#{dealController.pickUpCity}" styleClass="placeInput"/>
                                     </p:column>
                                     <p:column>
-                                        <div class="ui-inputgroup">
-                                            <p:inputText placeholder="Enter location" value="#{dealController.dropOffCity}"/>
-                                            <p:commandButton icon="ui-icon-location"/>  
-                                        </div>
+                                        <p:inputText placeholder="Enter location" value="#{dealController.dropOffCity}" styleClass="placeInput"/>
                                     </p:column>
-                                    <p:column><p:calendar id="datetime" value="#{dealController.startDate}" pattern="yyyy-MM-dd HH:mm" showOn="button"/></p:column>
-                                    <p:column><p:calendar id="datetime1" value="#{dealController.endDate}" pattern="yyyy-MM-dd HH:mm" showOn="button"/></p:column>
+                                    <p:column><p:calendar id="datetime" value="#{dealController.startDate}" pattern="yyyy-MM-dd HH:mm" placeholder="Choose date"/></p:column>
+                                    <p:column><p:calendar id="datetime1" value="#{dealController.endDate}" pattern="yyyy-MM-dd HH:mm" placeholder="Choose date"/></p:column>
                                     <p:column><p:commandButton id="requestButton" icon="ui-icon-find" actionListener="#{dealController.freeCarList()}" styleClass="findbutton"/></p:column>           
                                 </p:row>
                             </p:panelGrid>
@@ -103,6 +82,39 @@
                 </p:panel>
                
                 <p:panel styleClass="main-panel"/>
+                
+                                
+          <!--      <p:panel styleClass="picturePanel">
+                    <h:link outcome="index"><p:graphicImage name="img/custom/montenegro1.jpeg" styleClass="myImage"/></h:link>
+                    &nbsp;
+                    <h:link outcome="index"><p:graphicImage name="img/custom/montenegro1.jpeg" styleClass="myImage"/></h:link>
+                    &nbsp;
+                    <h:link outcome="index"><p:graphicImage name="img/custom/montenegro1.jpeg" styleClass="myImage"/></h:link>
+                   
+                </p:panel> -->
+          
+         
+          <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center; margin-top: 2px; margin-bottom: 2px;">
+              <h:link outcome="index">
+                  <p:panel styleClass="picturePanel1">
+                      <p:panelGrid style="width: 350px; height: 120px; margin-top: 200px">
+                          <p:row>
+                              <p:column style="background-color: black !important; border-bottom: 1px solid white !important; color: white; text-align: center; text-decoration: none !important">
+                          <h:outputText value="DRIVE loyality program"/>
+                              </p:column>
+                          </p:row>
+                          <p:row>
+                               <p:column style="background-color: black !important">
+                          <h:outputText value="Ggfhdhfgdhfgdhfgdh dfgdfghdf gdhfgdhf  dgdhgdh dgfhdgfdh"/>
+                          </p:column>
+                           </p:row>
+                      </p:panelGrid>
+                  </p:panel>
+              </h:link>
+              <h:link outcome="index"><p:panel styleClass="picturePanel1"/></h:link>
+              <h:link outcome="index"><p:panel styleClass="picturePanel1"/></h:link>
+              <h:link outcome="index"><p:panel styleClass="picturePanel1"/></h:link>
+          </div>
                 
                 <p:accordionPanel  id="accordion" widgetVar="accordion" activeIndex="1">
                     <p:tab title="SUBSCRIBE TO OUR NEWSLETTER TO RECEIVE INFORMATION ABOUT SPECIAL OFFERS">
@@ -197,6 +209,7 @@
                           
                     <h3>We work for you and do everything in order to make car rental services as convenient and profitable as possible.</h3>
                 </p:panel>                               
+                
                 <p:panel style="height: 200px; width: 1600px; margin: 0 auto; border: 0;">
                     <p:panelGrid>
                         <p:row>
@@ -213,17 +226,40 @@
                     </p:panelGrid>
                 </p:panel>
                 
-                
-                
-                
-                
-                <p:panel id="blackPanel" style="height: 400px; width: 1600px; margin: 0 auto; background-color: #1b201a; border: 0; display: flex; align-items: center; justify-content: center;">
-                    <p:toolbar style="height: 40px; width: 500px"/>
-                   
+                           
+                <p:panel styleClass="blackPanel">
+                    <p:panelGrid>
+                        <p:row>
+                            <h:inputText value="WHERE WE WORK"/>
+                            <h:inputText value="PAGES"/>
+                            <h:inputText value="CONTACTS"/>
+                            <h:inputText value="REQUISITES"/>
+                        </p:row>
+                        <p:row>
+                            
+                        </p:row>
+                        <p:row>
+                            
+                        </p:row>
+                        <p:row>
+                            
+                        </p:row>
+                        
+                        <p:row>
+                            
+                        </p:row>
+                        <p:row>
+                            
+                        </p:row>
+                        <p:row>
+                            
+                        </p:row>
+                    </p:panelGrid>
                 </p:panel>
-               
                 
-                <p:panel style="height: 80px; width: 1600px; margin: 0 auto; border: 0; background: black !important; position: relative;" styleClass="myPanel">
+                             
+                
+                <p:panel styleClass="footerPanel">
                    
                     <p:toolbar styleClass="footerToolbar">
                         <f:facet name="left">
