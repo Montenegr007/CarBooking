@@ -456,12 +456,48 @@ img:hover {
 }
 
 .picturePanel1{
-background-image: url('img/montenegro1.jpeg');
-
-border-radius: 0;
-height: 350px;
-width: 393px;
+    background-image: url('img/monte1.jpg');
+    border-radius: 0;
+    padding: 0px! important;
+    height: 343px;
+    width: 400px;
 }
 
+.picturePanel2{
+    background-image: url('img/monte2.jpg');
+    border-radius: 0;
+    padding: 0px! important;
+    height: 343px;
+    width: 400px;
+}
+
+.picturePanel3{
+    background-image: url('img/monte3.jpg');
+    border-radius: 0;
+    padding: 0px! important;
+    height: 343px;
+    width: 400px;
+}
+
+.picturePanel4{
+    background-image: url('img/monte4.jpg');
+    border-radius: 0;
+    padding: 0px! important;
+    height: 343px;
+    width: 400px;
+}
+
+.ui-panelgrid a {
+    color: white !important;
+    text-shadow: none !important;
+    font-size: small !important;
+    font-weight: bold !important;
+    padding-right: 15px;
+    text-decoration: none;
+}
+
+.ui-panelgrid a:hover {
+    text-decoration: underline;
+}
 
 
