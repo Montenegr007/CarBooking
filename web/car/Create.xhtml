@@ -24,7 +24,13 @@
                                 <h:outputLabel value="Year of manufacture" style="font-size: 14px;"/>
                                 <h:outputLabel value="Body color" style="font-size: 14px;"/>
                                 <h:outputLabel value="Body type" style="font-size: 14px;"/>
-                                <p:inputText id="class" value="#{carController.selected.carClass}" style="width: 100px;"/>
+                                <p:selectOneMenu id="carClass" value="#{carController.selected.carClass}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_color}" style="width: 100px;">
+                                    <f:selectItem itemLabel="Select a car class" itemValue=""/>
+                                    <f:selectItem itemLabel="Economy" itemValue="Economy" />
+                                    <f:selectItem itemLabel="Standard" itemValue="Standard" />
+                                    <f:selectItem itemLabel="Luxury" itemValue="Luxury" />
+                                    <f:selectItem itemLabel="Crossover" itemValue="Crossover" />
+                                </p:selectOneMenu>
                                 <p:inputText id="brand" value="#{carController.selected.brand}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_brand}" style="width: 100px;"/>
                                 <p:inputText id="model" value="#{carController.selected.model}" required="true" requiredMessage="#{msg.CreateCarRequiredMessage_model}" style="width: 100px;"/>
                                 <p:inputText id="plateNo" value="#{carController.selected.plateNo}" style="width: 100px;"/>

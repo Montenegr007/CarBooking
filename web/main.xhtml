@@ -45,7 +45,7 @@
                                 </p:slideMenu>
                             </p:commandButton> 
                                                     
-                            <p:selectOneMenu  value="#{indexController.locale}" onchange="submit()" valueChangeListener="#{indexController.localeChanged}" styleClass="localeSelector">
+                            <p:selectOneMenu  value="#{indexController.locale}" onchange="submit()" valueChangeListener="#{indexController.changeLocale}" styleClass="localeSelector">
                                  <f:selectItem itemLabel="English" itemValue="English"/>
                                  <f:selectItem itemLabel="Russian" itemValue="Russian"/> 
                             </p:selectOneMenu>                 
@@ -66,14 +66,14 @@
                                 </p:row>
                                 <p:row>
                                     <p:column>
-                                        <p:inputText placeholder="Enter location" value="#{dealController.pickUpCity}" styleClass="placeInput"/>
+                                        <p:autoComplete value="#{indexController.pickupPlace}" completeMethod="#{indexController.completePlaceList}" placeholder="Enter location" />
                                     </p:column>
                                     <p:column>
-                                        <p:inputText placeholder="Enter location" value="#{dealController.dropOffCity}" styleClass="placeInput"/>
+                                        <p:autoComplete value="#{indexController.returnPlace}" completeMethod="#{indexController.completePlaceList}" placeholder="Enter location" />
                                     </p:column>
-                                    <p:column><p:calendar id="datetime" value="#{dealController.startDate}" pattern="yyyy-MM-dd HH:mm" placeholder="Choose date"/></p:column>
-                                    <p:column><p:calendar id="datetime1" value="#{dealController.endDate}" pattern="yyyy-MM-dd HH:mm" placeholder="Choose date"/></p:column>
-                                    <p:column><p:commandButton id="requestButton" icon="ui-icon-find" actionListener="#{dealController.freeCarList()}" styleClass="findbutton"/></p:column>           
+                                    <p:column><p:calendar id="datetime" value="#{indexController.pickupDate}" pattern="yyyy-MM-dd HH:mm" placeholder="Choose date"/></p:column>
+                                    <p:column><p:calendar id="datetime1" value="#{indexController.returnDate}" pattern="yyyy-MM-dd HH:mm" placeholder="Choose date"/></p:column>
+                                    <p:column><p:commandButton id="requestButton" icon="ui-icon-find" actionListener="#{indexController.getFreeCarList}" styleClass="findbutton"/></p:column>           
                                 </p:row>
                             </p:panelGrid>
                        

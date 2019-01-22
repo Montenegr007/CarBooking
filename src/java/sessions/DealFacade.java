@@ -36,7 +36,7 @@ public class DealFacade extends AbstractFacade<Deal> {
         super(Deal.class);
     }
     
-    public List<Car> listOfFreeCars(Date date1, Date date2){
+    public List<Car> getListOfFreeCars(Date date1, Date date2){
         
         List<Car> freeCars = new ArrayList();
                   

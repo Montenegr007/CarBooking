@@ -6,21 +6,57 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template1.xhtml">
+    <h:head>
+        <h:outputStylesheet library="css" name="freecar.css"/>
+    </h:head>
+   
+    <ui:composition template="template1.xhtml">
+        
+        <ui:define name="css">
+            <h:outputStylesheet library="css" name="freecar.css"/>
+        </ui:define>
 
         <ui:define name="title">
-            <h:outputText value=""></h:outputText>
+            <h:outputText value="Available cars"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
-           
             <h:form id="CarListForm">
                 
-                <p:panel style="height: 100px; width: 1600px; margin: 0 auto;">
+                                 
+                <p:panel style="height: 100px; width: 1600px; margin: 0 auto; border: none; display: flex; justify-content: center; align-items: center; background: #f5f5f5 !important">
+                    <p:panelGrid>
+                        <p:row style="border: none! important; background: #f5f5f5 !important">
+                            <p:column style="width: 3.6%! important; border: none!important">
+                                <p:graphicImage url="/resources/css/icons/arrow.png"/>
+                            </p:column>
+                            <p:column style="width: 29.73%! important; border: none!important">
+                                <h:outputText value="#{indexController.pickupPlace}" style="font-size: 20px; font-weight: bold"/>
+                                    <br/>
+                                    <h:outputText value="#{indexController.listForDates.get(0)}" style="font-size: 14px"/>
+                            </p:column>
+                             <p:column style="width: 3.6%! important; border: none!important">
+                                <p:graphicImage url="/resources/css/icons/arrow.png"/>
+                            </p:column>
+                            <p:column style="width: 29.73%! important; border: none!important">
+                                    <h:outputText value="#{indexController.returnPlace}" style="font-size: 20px; font-weight: bold"/>
+                                    <br/>
+                                    <h:outputText value="#{indexController.listForDates.get(1)}" style="font-size: 14px"/>
+                            </p:column>
+                            <p:column style="width: 3.6%! important; border: none!important">
+                                <p:graphicImage url="/resources/css/icons/arrow.png"/>
+                            </p:column>
+                            <p:column style="width: 29.73%! important; border: none!important">
+                                <h:outputText value="Rental duration" style="font-size: 20px; font-weight: bold"/>
+                                <br/>
+                                <h:outputText value="#{indexController.listForDates.get(2)} d." style="font-size: 14px"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
                     
                 </p:panel>
                
-                <p:dataGrid id="datalist" columns="4" value="#{dealController.freeCars}" var="car" 
+                <p:dataGrid id="datalist" columns="4" value="#{indexController.freeCompactCars}" var="car" rendered="#{indexController.freeCompactCars != null}" 
                                 paginator="true"
                                 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}" 
                                 paginatorPosition="bottom"
@@ -31,35 +67,81 @@
                             COMPACT
                         </f:facet>
                
-                    <p:panel>
-                            <p:panelGrid style="width: 100%;">
+                    <p:panel header="#{car.brand} #{car.model}" style="font-size: 20px">
+                                                 
+                            <p:panelGrid style="width: 100%">
+                                
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:graphicImage name="img/cars/kia_ceed_black.jpeg" height="225px" width="300px"/>
+                                    <p:column colspan="5" style="border: 1px solid orange! important; background: #f5f5f5! important">
+                                        <h:outputText value="&euro; #{car.actualPrice}" style="font-size: 20px; color: black; font-weight: normal"/>
+                                        &nbsp;
+                                        <h:outputText value="Per day" style="font-size: 14px; color: black; font-weight: normal"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.brand} #{car.model}"/>
+                                    <p:column colspan="5">
+                                        <p:graphicImage name="img/cars/#{car.brand}-#{car.model}-#{car.color}.png" height="225px" width="300px"/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="day"/>
+                                </p:row>
+                                <p:row>
+                                    <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/user16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfSeats}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
                                     </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/door16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfDoors}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/gearbox16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="M" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Manual'}"/>
+                                        <h:outputText value="A" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Automatic'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/fuel16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.fuel}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/ac16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="AC" style="font-size: 14px; color: black" rendered="#{car.airCondition == 'AC'}"/>
+                                        <h:outputText value="CC" style="font-size: 14px; color: black" rendered="#{car.airCondition != 'AC'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                    
                                 </p:row>
                                
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.transmission}"/>
+                                    <p:column colspan="5">
+                                        <h:outputText/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="#{car.productionYear}"/>
-                                    </p:column>
+                                   
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:commandButton style="width: 100%; height: 100%; padding: 0;" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
+                                    <p:column colspan="5" style="padding: 0! important">
+                                        
+                                        <p:commandButton style="width: 100%! important; height: 50px; padding: 0; font-weight: bold! important" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
                                             <f:setPropertyActionListener value="#{car}" target="#{carController.selected}" />
                                         </p:commandButton>
+                                                
                                     </p:column>
                                 </p:row>
                             </p:panelGrid> 
@@ -67,10 +149,12 @@
                
                         </p:panel>
                     </p:dataGrid>
+                
+                 <br/>
                 <br/>
-                <br/>
-               
-<p:dataGrid id="datalist1" columns="4"  value="#{dealController.freeCars}" var="car"
+                
+                               
+                <p:dataGrid id="datalist1" columns="4"  value="#{indexController.freeStandardCars}" var="car" rendered="#{indexController.freeStandardCars != null}"
                                 paginator="true"
                                 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}"
                                 paginatorPosition="bottom"
@@ -81,46 +165,93 @@
                             STANDARD
                         </f:facet>
               
-                <p:panel>
-                            <p:panelGrid style="width: 100%;">
+                <p:panel header="#{car.brand} #{car.model}" style="font-size: 20px">
+                                                 
+                            <p:panelGrid style="width: 100%">
+                                
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:graphicImage name="img/cars/kia_ceed_black.jpeg" height="225px" width="300px"/>
+                                    <p:column colspan="5" style="border: 1px solid orange! important; background: #f5f5f5! important">
+                                        <h:outputText value="&euro; #{car.actualPrice}" style="font-size: 20px; color: black; font-weight: normal"/>
+                                        &nbsp;
+                                        <h:outputText value="Per day" style="font-size: 14px; color: black; font-weight: normal"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.brand} #{car.model}"/>
+                                    <p:column colspan="5">
+                                        <p:graphicImage name="img/cars/#{car.brand}-#{car.model}-#{car.color}.png" height="225px" width="300px"/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="day"/>
+                                </p:row>
+                                <p:row>
+                                    <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/user16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfSeats}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
                                     </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/door16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfDoors}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/gearbox16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="M" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Manual'}"/>
+                                        <h:outputText value="A" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Automatic'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/fuel16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.fuel}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/ac16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="AC" style="font-size: 14px; color: black" rendered="#{car.airCondition == 'AC'}"/>
+                                        <h:outputText value="CC" style="font-size: 14px; color: black" rendered="#{car.airCondition != 'AC'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                    
                                 </p:row>
                                
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.transmission}"/>
+                                    <p:column colspan="5">
+                                        <h:outputText/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="#{car.productionYear}"/>
-                                    </p:column>
+                                   
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:commandButton style="width: 100%; height: 100%; padding: 0;" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
+                                    <p:column colspan="5" style="padding: 0! important">
+                                        
+                                        <p:commandButton style="width: 100%! important; height: 50px; padding: 0; font-weight: bold! important" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
                                             <f:setPropertyActionListener value="#{car}" target="#{carController.selected}" />
                                         </p:commandButton>
+                                                
                                     </p:column>
                                 </p:row>
                             </p:panelGrid> 
-            
+                        
+               
                         </p:panel>
                     </p:dataGrid>
-               
+                
                 <br/>
                 <br/>
                 
-                <p:dataGrid id="datalist2" columns="4"  value="#{dealController.freeCars}" var="car"
+                <p:dataGrid id="datalist2" columns="4" value="#{indexController.freeLuxuryCars}" var="car" rendered="#{indexController.freeLuxuryCars != null}"
                                 paginator="true"
                                 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}"
                                 paginatorPosition="bottom"
@@ -131,46 +262,93 @@
                             LUXURY
                         </f:facet>
                
-                <p:panel>
-                            <p:panelGrid style="width: 100%;">
+                <p:panel header="#{car.brand} #{car.model}" style="font-size: 20px">
+                                                 
+                            <p:panelGrid style="width: 100%">
+                                
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:graphicImage name="img/cars/kia_ceed_black.jpeg" height="225px" width="300px"/>
+                                    <p:column colspan="5" style="border: 1px solid orange! important; background: #f5f5f5! important">
+                                        <h:outputText value="&euro; #{car.actualPrice}" style="font-size: 20px; color: black; font-weight: normal"/>
+                                        &nbsp;
+                                        <h:outputText value="Per day" style="font-size: 14px; color: black; font-weight: normal"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.brand} #{car.model}"/>
+                                    <p:column colspan="5">
+                                        <p:graphicImage name="img/cars/#{car.brand}-#{car.model}-#{car.color}.png" height="225px" width="300px"/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="day"/>
+                                </p:row>
+                                <p:row>
+                                    <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/user16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfSeats}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
                                     </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/door16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfDoors}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/gearbox16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="M" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Manual'}"/>
+                                        <h:outputText value="A" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Automatic'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/fuel16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.fuel}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/ac16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="AC" style="font-size: 14px; color: black" rendered="#{car.airCondition == 'AC'}"/>
+                                        <h:outputText value="CC" style="font-size: 14px; color: black" rendered="#{car.airCondition != 'AC'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                    
                                 </p:row>
                                
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.transmission}"/>
+                                    <p:column colspan="5">
+                                        <h:outputText/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="#{car.productionYear}"/>
-                                    </p:column>
+                                   
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:commandButton style="width: 100%; height: 100%; padding: 0;" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
+                                    <p:column colspan="5" style="padding: 0! important">
+                                        
+                                        <p:commandButton style="width: 100%! important; height: 50px; padding: 0; font-weight: bold! important" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
                                             <f:setPropertyActionListener value="#{car}" target="#{carController.selected}" />
                                         </p:commandButton>
+                                                
                                     </p:column>
                                 </p:row>
                             </p:panelGrid> 
-              
+                        
+               
                         </p:panel>
                     </p:dataGrid>
-                
+                               
                 <br/>
                 <br/>
                
-                <p:dataGrid id="datalist3" columns="4"  value="#{dealController.freeCars}" var="car"
+                <p:dataGrid id="datalist3" columns="4"  value="#{indexController.freeCrossoverCars}" var="car" rendered="#{indexController.freeCrossoverCars != null}"
                                 paginator="true"
                                 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}"
                                 paginatorPosition="bottom"
@@ -181,43 +359,89 @@
                             CROSSOVER
                         </f:facet>
               
-                <p:panel>
-                            <p:panelGrid style="width: 100%;">
+                <p:panel header="#{car.brand} #{car.model}" style="font-size: 20px">
+                                                 
+                            <p:panelGrid style="width: 100%">
+                                
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:graphicImage name="img/cars/kia_ceed_black.jpeg" height="225px" width="300px"/>
+                                    <p:column colspan="5" style="border: 1px solid orange! important; background: #f5f5f5! important">
+                                        <h:outputText value="&euro; #{car.actualPrice}" style="font-size: 20px; color: black; font-weight: normal"/>
+                                        &nbsp;
+                                        <h:outputText value="Per day" style="font-size: 14px; color: black; font-weight: normal"/>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.brand} #{car.model}"/>
+                                    <p:column colspan="5">
+                                        <p:graphicImage name="img/cars/#{car.brand}-#{car.model}-#{car.color}.png" height="225px" width="300px"/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="day"/>
+                                </p:row>
+                                <p:row>
+                                    <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/user16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfSeats}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
                                     </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/door16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.numOfDoors}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/gearbox16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="M" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Manual'}"/>
+                                        <h:outputText value="A" style="font-size: 14px; color: black" rendered="#{car.transmission == 'Automatic'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/fuel16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="#{car.fuel}" style="font-size: 14px; color: black"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                     <p:column style="background: #f5f5f5! important">
+                                        <div class="ui-inputgroup" style="display: flex; align-items: center; justify-content: center">
+                                        <p:graphicImage name="css/icons/ac16-orange.png"/>
+                                        &nbsp;
+                                        <h:outputText value="AC" style="font-size: 14px; color: black" rendered="#{car.airCondition == 'AC'}"/>
+                                        <h:outputText value="CC" style="font-size: 14px; color: black" rendered="#{car.airCondition != 'AC'}"/>
+                                        </div>
+                                        
+                                    </p:column>
+                                    
                                 </p:row>
                                
                                 <p:row>
-                                    <p:column>
-                                        <h:outputText value="#{car.transmission}"/>
+                                    <p:column colspan="5">
+                                        <h:outputText/>
                                     </p:column>
-                                    <p:column>
-                                        <h:outputText value="#{car.productionYear}"/>
-                                    </p:column>
+                                   
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:commandButton style="width: 100%; height: 100%; padding: 0;" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
+                                    <p:column colspan="5" style="padding: 0! important">
+                                        
+                                        <p:commandButton style="width: 100%! important; height: 50px; padding: 0; font-weight: bold! important" value="DETAILS" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" title="View Detail">
                                             <f:setPropertyActionListener value="#{car}" target="#{carController.selected}" />
                                         </p:commandButton>
+                                                
                                     </p:column>
                                 </p:row>
                             </p:panelGrid> 
                         
-            
-                        </p:panel>
-                    </p:dataGrid>
                
+                        </p:panel>
+                    </p:dataGrid> 
+                         
               
             
             </h:form>
@@ -229,5 +453,7 @@
             <ui:include src=""/>
         </ui:define>
     </ui:composition>
+        
+   
 
 </html>

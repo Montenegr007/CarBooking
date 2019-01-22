@@ -20,12 +20,11 @@ import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlBody;
-import javax.faces.component.html.HtmlInputText;
-import javax.faces.component.html.HtmlOutputText;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import lombok.Getter;
+import lombok.Setter;
 import org.primefaces.context.RequestContext;
 
 @Named("dealController")
@@ -34,44 +33,23 @@ public class DealController implements Serializable {
 
     @EJB
     private sessions.DealFacade ejbFacade;
+    
     private List<Deal> items = null;
     private Deal selected;
     private Car selectedCar;
     
-    private List<Car> freeCars = null;
-    private List<String> dates = null;
+    @Getter @Setter private List<Car> freeCars = null;
+    @Getter @Setter private List<String> dates = null;
     
-    private Date startDate;
-    private Date endDate;
-    private String pickUpCity;
-    private String dropOffCity;
+    @Getter @Setter private Date startDate;
+    @Getter @Setter private Date endDate; 
+    @Getter @Setter private String pickUpCity;
+    @Getter @Setter private String dropOffCity;
     
       
     /*-------------------------------------------------------------*/
     
     public DealController() {
-    }
-
-    public String getPickUpCity() {
-        return pickUpCity;
-    }
-
-    public String getDropOffCity() {
-        return dropOffCity;
-    }
-
-    public void setPickUpCity(String pickUpCity) {
-        this.pickUpCity = pickUpCity;
-    }
-
-    public void setDropOffCity(String dropOffCity) {
-        this.dropOffCity = dropOffCity;
-    }
-    
-    
-
-    public List<String> getDates() {
-        return dates;
     }
 
     public Deal getSelected() {
@@ -90,21 +68,7 @@ public class DealController implements Serializable {
         return selectedCar;
     }
     
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+    
 
     public DealFacade getEjbFacade() {
         return ejbFacade;
@@ -112,14 +76,6 @@ public class DealController implements Serializable {
 
     public void setEjbFacade(DealFacade ejbFacade) {
         this.ejbFacade = ejbFacade;
-    }
-
-    public List<Car> getFreeCars() {
-        return freeCars;
-    }
-
-    public void setFreeCars(List<Car> freeCars) {
-        this.freeCars = freeCars;
     }
 
     protected void setEmbeddableKeys() {
@@ -132,7 +88,7 @@ public class DealController implements Serializable {
         return ejbFacade;
     }
     
-    public void freeCarList() throws IOException{
+   /* public void getFreeCarList() throws IOException{
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         String sDate = formatter.format(startDate);
@@ -178,7 +134,7 @@ public class DealController implements Serializable {
        
        
         FacesContext.getCurrentInstance().getExternalContext().redirect("FreeCars.xhtml"); 
-    }
+    } */
     
     public Deal prepareCreate() {
         selected = new Deal();

@@ -7,58 +7,230 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title><ui:insert name="title">Drive rent a car</ui:insert></title>
-        <h:outputStylesheet library="css" name="freecar.css"/>
+        <title><ui:insert name="title"/></title>
+        <h:outputStylesheet library="css" name="index.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        <ui:insert name="css"/>
     </h:head>
 
     <h:body>
-
-        <h:form>
-        <p:growl id="growl" life="3000" />
-        
-                <p:panel style="height: 100px; width: 1600px; margin: 0 auto; background-color: black; border: 0;">
-                    <p:toolbar>
+         
+        <p:growl id="growl" life="3000" /> 
+               
+              <h:form>
+                <p:panel styleClass="headerPanel">
+                    <p:toolbar styleClass="headerToolbar">
                         <f:facet name="left">
-                            <p:outputLabel value="DRIVE" style="font-size: 65px; color: white;"/>
+                            <p:outputLabel value="DRIVE"/>
                             <p:outputLabel value="&reg;" style="font-size: 20px; color: white;"/>
                         </f:facet>
-                         <f:facet name="right">
-                             <p:menuButton value="LANGUAGE" styleClass="firstmenubutton" icon="ui-icon-language">
-                                 <p:menuitem value="English"/>
-                                 <p:menuitem value="Russian"/>
-                             </p:menuButton>
-                             <p:commandButton id="login" value="LOG IN" styleClass="login" />
-                             <p:commandButton id="menuButton" value="MENU" icon="ui-icon-menu" styleClass="menu">
-                                 <p:slideMenu overlay="true" trigger="menuButton" my="left top" at="left bottom">
+                        <f:facet name="right">
+                            <p:commandButton id="login" value="LOG IN" styleClass="loginButton" />
+                            <p:commandButton id="menuButton" value="MENU" styleClass="menuButton">
+                                <p:slideMenu overlay="true" trigger="menuButton" my="left top" at="left bottom" styleClass="slideMenu">
                                      <p:menuitem value="Car rental"/>
                                      <p:menuitem value="Truck rental"/>
                                      <p:menuitem value="Best deals"/>
                                      <p:menuitem value="Locations"/>
-                                     <p:submenu label="My reservation">
-                                         <p:menuitem value="Change reservation"/>
-                                         <p:menuitem value="Cancel reservation"/>
-                                         <p:menuitem value="MyDrive"/>
+                                     <p:separator/>
+                                     <p:submenu label="For partners">
+                                     <p:menuitem value="Become partners"/>
+                                     <p:menuitem value="Ask question"/>
                                      </p:submenu>
-                                     <p:submenu label="Rental services">
-                                         <p:menuitem value="Service overview"/>
-                                         <p:menuitem value="Drive cards"/>
-                                         <p:menuitem value="Rental information"/>
-                                     </p:submenu>
-                                     <p:menuitem value="For partners"/>
                                      <p:menuitem value="Career with Drive"/>
-                                 </p:slideMenu>
-                             </p:commandButton>
+                                </p:slideMenu>
+                            </p:commandButton> 
+                            <p:selectOneMenu  value="#{indexController.locale}" onchange="submit()" valueChangeListener="#{indexController.changeLocale}" styleClass="localeSelector">
+                                 <f:selectItem itemLabel="English" itemValue="English"/>
+                                 <f:selectItem itemLabel="Russian" itemValue="Russian"/> 
+                            </p:selectOneMenu>                 
                         </f:facet>
                     </p:toolbar>
                 </p:panel>
-</h:form>
-         
+              </h:form>
+               
+            
+               
                 <ui:insert name="body"/>
-          
-
-      
-
+             
+             <br/>
+             <br/>
+        
+       
+             <h:form>
+                 <p:panel styleClass="blackPanel">
+                    <p:panelGrid>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column style="width: 275px! important">
+                                <h:outputText value="WHERE WE WORK" style="font-weight: bold"/>
+                            </p:column>
+                            <p:column style="width: 275px! important">
+                            <h:outputText value="PAGES"/>
+                            </p:column>
+                            <p:column style="width: 275px! important"> 
+                            <h:outputText value="CONTACTS"/>
+                            </p:column>
+                            <p:column style="width: 275px! important">
+                            <h:outputText value="REQUISITES"/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                                <h:outputText value=""/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value=""/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Budva"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLink>About us</h:outputLink>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value="booking@driverentacar.com"/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value="Drive Software DOO"/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Tivat"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLink>For partners</h:outputLink>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value="+382 69 396 900"/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value="Reg. number: 1234567"/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Kotor"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLink>Career with Drive</h:outputLink>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value="+382 33 457 496"/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value="Prva proleterska, 15"/>
+                            </p:column>
+                        </p:row>
+                        
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Herceg Novi"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLink>Imprint&amp;Privacy"</h:outputLink>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value="+382 33 457 496"/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value="85310, Budva, Montenegro"/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Bar"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLink>Terms&amp;Conditions</h:outputLink>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value=""/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Podgorica"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputLink>Site map</h:outputLink>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="For correspondence" style="font-size: 16px;"/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Ulcinj"/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value="Dubovica III, S-29"/>
+                            </p:column>
+                        </p:row>
+                        <p:row style="color: white; background-color: transparent">
+                            <p:column>
+                            <h:outputText value="Petrovac"/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column> 
+                            <h:outputText value=""/>
+                            </p:column>
+                            <p:column>
+                            <h:outputText value="85310, Budva, Montenegro"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </p:panel>
+                
+                             
+                
+                <p:panel styleClass="footerPanel">
+                   
+                    <p:toolbar styleClass="footerToolbar">
+                        <f:facet name="left">
+                            <h:outputText value="&copy; Copyright - Driverentacar.com. Car renting in Montenegro - 2011-2019. All rights reserved." style="text-shadow: none! important; color: white; font-size: small; font-weight: normal"/>
+                    <!--    <h:outputLink>Contacts</h:outputLink>
+                            <h:outputLink>Drive group</h:outputLink>
+                            <h:outputLink>Career with Drive</h:outputLink>
+                            <h:outputLink>Drive partners</h:outputLink>
+                            <h:outputLink>Drive news</h:outputLink>
+                            <h:outputLink>Imprint&amp;Privacy</h:outputLink>
+                            <h:outputLink>Terms&amp;Conditions</h:outputLink> -->
+                        </f:facet>
+                        <f:facet name="right">
+                            <h:outputLink><p:graphicImage name="css/icons/facebook4.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/instagram.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/twitter.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/youtube.png"/></h:outputLink>
+                            <h:outputLink><p:graphicImage name="css/icons/snapchat.png"/></h:outputLink>
+                        </f:facet>
+                    </p:toolbar>
+                
+                </p:panel>
+             </h:form>
+                
     </h:body>
 
 </html>
